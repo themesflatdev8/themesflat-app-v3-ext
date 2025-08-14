@@ -1,0 +1,25 @@
+{{#ifCond settings.title "||" countdownTimer.active}}
+  <div class="Msell-VD__Header {{#ifCond settings.title "&&" countdownTimer.active}}Msell-VD__Header--multi{{/ifCond}}">
+    {{#if settings.title}}
+      <span class="Msell-VD__HeaderTitle">{{{settings.title}}}</span>
+    {{/if}}
+    {{#if countdownTimer.active}}
+      <div  class="Msell-VD__CountdownTimer">
+        <msell-countdown-timer></msell-countdown-timer>
+      </div>
+    {{/if}}
+  </div>
+{{/ifCond}}
+<div class="Msell-VD__Content"></div>
+{{#if settings.contentAddToCartButton}}
+  <div class="Msell-VD__Footer">
+    <button class="{{classAddToCard}} Msell-Button-AddToCart">
+      <span>{{settings.contentAddToCartButton}}</span>
+      <div class="Msell-Spinner">
+        <svg aria-hidden="true" focusable="false" class="Msell-Spinner-Svg" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+          <circle class="Msell-Spinner-Path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+        </svg>
+      </div>
+    </button>
+  </div>
+{{/if}}

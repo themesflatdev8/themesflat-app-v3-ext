@@ -1,0 +1,45 @@
+$classNameTrustBadge: ".Msell-Trust-Badge";
+
+#{$classNameTrustBadge}{
+  --msell-trust-badge-width: var(--msell-trust-badge-width-desktop);
+  --msell-trust-badge-height: var(--msell-trust-badge-height-desktop);
+  @media (max-width: 768px) {
+    --msell-trust-badge-width: var(--msell-trust-badge-width-mobile);
+    --msell-trust-badge-height: var(--msell-trust-badge-height-mobile);
+  }
+  margin: 20px 0;
+  h2{
+    font-weight: 500;
+    font-size: var(--msell-trust-badge-font-size);
+    line-height: var(--msell-trust-badge-line-height);
+    color: var(--msell-trust-badge-text-color);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  &__List{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+  }
+  &__Item{
+    width: var(--msell-trust-badge-width);
+    height: var(--msell-trust-badge-height);
+    img{
+      width: var(--msell-trust-badge-width);
+      height: var(--msell-trust-badge-height);
+    }
+  }
+  &[data-template="inline"]{
+    padding: 0 8px 20px 8px;
+    border-bottom: 1px solid #e1e3e5;
+  }
+  &[data-template="box"]{
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--msell-trust-badge-border-color);
+    background-color: var(--msell-trust-badge-background-color);
+  }
+}

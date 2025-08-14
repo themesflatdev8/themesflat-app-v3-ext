@@ -1,0 +1,18 @@
+{% render 'script' %}
+<script>
+    shopifyMSellProductBundle = 1;
+</script>
+
+{% schema %}
+    {
+        "name": "Product Bundle",
+        "target": "section",
+        "class": "Msell-Bundle",
+        "stylesheet": "msell.css",
+        "javascript": "msell.js",
+        "enabled_on": {
+            "templates": ["product"]
+        },
+        "settings":[]
+    }
+{% endschema %}

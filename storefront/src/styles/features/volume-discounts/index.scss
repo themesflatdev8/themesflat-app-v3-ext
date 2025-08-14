@@ -1,0 +1,477 @@
+$classNameVD: ".Msell-VD";
+$classNameVDChooseVariantModal: ".Msell-VD-CV-Modal";
+$classNameVariant: ".Msell-Variant";
+$classNameVDChooseVariant: ".Msell-VD-CV";
+
+#{$classNameVD}{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  max-width: 600px;
+  margin: 24px auto;
+  &__Header{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border-radius: 0;
+    border-top: 1px solid var(--msell-border-color);
+    border-bottom: 1px solid var(--msell-border-color);
+    margin-bottom: -4px;
+    &Title{
+      color: #1e1212;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+      margin: 0;
+    }
+    &--multi{
+      padding: 8px;
+      justify-content: space-between;
+    }
+  }
+  &__CountdownTimer{
+    padding: 4px;
+    background: #fff;
+    border: 1px solid var(--msell-outstand-color);
+    border-radius: var(--msell-border-radius, 8px);
+  }
+  &__Content{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__Item{
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    border-radius: var(--msell-border-radius, 8px);
+    border: 1px solid var(--msell-border-color);
+    background: var(--msell-card-background-color);
+    padding: 20px 16px;
+    cursor: pointer;
+    transition: border 0.3s linear;
+    &Select{
+      position: relative;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      &::before{
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 20px;
+        height: 20px;
+        border-radius: 100%;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      &::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: var(--msell-primary-color);
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        border-radius: 100%;
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        opacity: 0;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+      }
+    }
+    &:hover{
+      #{$classNameVD}{
+        &__ItemSelect{
+          &::after{
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+        }
+      }
+    }
+    &--Active{
+      border: 1px solid var(--msell-primary-color);;
+      #{$classNameVD}{
+        &__ItemSelect{
+          &::before{
+            border: 1px solid var(--msell-primary-color);
+          }
+          &::after{
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+          }
+        }
+      }
+    }
+    &--popular{
+      margin-top: 12px;
+    }
+    &Variants{
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+    &Content{
+      width: 100%;
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+    }
+    &Info{
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    &Discount{
+      &--Primary{
+        display: block;
+        color: var(--msell-outstand-color);
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 16px;
+        margin: 0;
+        padding: 0;
+      }
+      &--Subdued{
+        display: block;
+        color: #363131;
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        margin: 0;
+        padding: 0;
+      }
+    }
+    &Name{
+      display: block;
+      color: #1e1212;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px;
+    }
+    &Price{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      margin-left: auto;
+      &-Sale{
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      &--Regular{
+        display: block;
+        width: 100%;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        color: #1e1212;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+        text-align: right;
+      }
+      &--Default{
+        display: inline;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1e1212;
+        text-decoration: line-through;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0 4px 0 0;
+        opacity: 0.6;
+      }
+      &--Discount{
+        display: inline-flex;
+        align-items: center;
+        color: var(--msell-outstand-color);
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        padding: 0px 2px;
+        border-radius: 4px;
+        border: 0.5px solid var(--msell-border-color);
+        // background: var(--msell-outstand-color);
+        margin: 0;
+        position: relative;
+        &:after{
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 0;
+          border-radius: 4px;
+          background-color: var(--msell-outstand-color);
+          opacity: 0.12;
+        }
+        svg{
+          width: 8px;
+          height: 12px;
+          fill: var(--msell-outstand-color);
+          margin-right: 2px;
+        }
+      }
+      &--Regular:empty, &--Default:empty, &--Discount:empty{
+        display: none !important;
+      }
+    }
+  }
+  &__Badge{
+    padding: 2px 12px 2px 14px;
+    background-color: var(--msell-outstand-color);
+    color: var(--msell-secondary-color);
+    border: none;
+    border-radius: 16px;
+    border-bottom-left-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    filter: drop-shadow(2px 3px 0.2px var(--msell-outstand-color));
+    box-shadow: 0 0px 3px 1px #ffffff96;
+    position: absolute;
+    left: -19px;
+    top: -24px;
+    animation: msellShake 6s infinite 3s;
+    &::before { 
+      position: absolute;
+      content: '';
+      height: 16px;
+      width: 16px;
+      background:  var(--msell-outstand-color);
+      bottom: -17px;
+      left: 0px;
+      transform: scale(-1, 1);
+      clip-path: polygon(0 0, 0% 100%, 100% 0);
+      z-index: 0;
+    }
+    
+    &Icon {
+      margin-inline: 2px;
+      font-size: 14px;
+      position:relative;
+    }
+    &Icon::before,
+    &Icon::after {
+      content: '+';
+      color: #fff;
+      position: absolute;
+      font-size: 10px;
+      left: -7.5px;
+    }
+    &Icon::before {
+      top: -4px;
+    }
+    &Icon::after {
+      top: 6px;
+    }
+  }
+  &__Variant{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    span{
+      color: #363131;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      margin: 0;
+    }
+    #{$classNameVariant}__Button{
+      justify-content: space-between;
+      border-radius: 4px;
+      border: 1px solid #BDBEBF;
+      padding: 5px 8px;
+      max-width: 100%;
+      cursor: pointer;
+      min-width: 180px;
+    }
+  }
+  &-Button{
+    &-AddToCart{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      white-space: nowrap;
+      border: 1px solid var(--msell-primary-color);
+      box-shadow: none;
+      background-color: var(--msell-secondary-color);
+      transition: background-color 0.2s linear;
+      border-radius: var(--msell-border-radius, 8px);
+  
+      span{
+        color: var(--msell-primary-color);
+      }
+      >svg{
+        width: 17px !important;
+        height: 15px !important;
+        fill: var(--msell-primary-color);
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        // opacity: 0.2;
+        // background-color: var(--msell-primary-color);
+        // transform: translateX(-100%);
+        // box-sizing: border-box;
+        // z-index: -1;
+        transition: all 0.2s linear;
+        z-index: 1;
+        border-radius: var(--msell-border-radius, 8px);
+      }
+    
+      &:hover {
+        // box-shadow: 0 0 10px 0 var(--msell-primary-color) inset, 0 0 10px 4px var(--msell-primary-color);
+        &:before {
+          // transform: translateX(0);
+          // background-color: var(--msell-primary-color);
+          // opacity: 0.05;
+          box-shadow: 0 0 0 -0.3px rgba(255,255,255, 0.05),0 0 0 2px var(--msell-primary-color);
+        }
+      }
+      &:focus, &:active{
+        background-color: var(--msell-secondary-color);
+      }
+    }
+  }
+  .Msell-Button{
+    width: 100%;
+    &:after{
+      opacity: 0.04 !important;
+    }
+  }
+}
+
+#{$classNameVDChooseVariantModal}{
+  .Msell-Modal__Content{
+    max-width: 572px;
+    width: 100%;
+    padding: 0;
+  }
+  #{$classNameVDChooseVariant}{
+    &__Header{
+      padding: 20px;
+      box-shadow: 0px -1px 0px 0px #E1E3E5 inset;
+      h3{
+        color: #050D20;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px;
+        margin: 0;
+      }
+    }
+    &__Content{
+      display: flex;
+      gap: 24px;
+      padding: 24px;
+    }
+    &__Media{
+      max-width: 198px;
+      width: 100%;
+      border-radius: 2px;
+      overflow: hidden;
+      img{
+        width: 100%;
+        object-fit: contain;
+        border-radius: 2px;
+      }
+    }
+    &__Info{
+      flex-grow: 1;
+      >a{
+        display: block;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: #050D20;
+        text-overflow: ellipsis; 
+        overflow: hidden; 
+        white-space: nowrap;
+        margin: 0 0 12px;
+        padding: 0;
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+        }
+      }
+      >strong{
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000000;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    &__Variants{
+      margin-top: 12px;
+      .Msell-Variant__Item{
+        display: block;
+        input[type=radio] + label{
+          max-width: calc(50% - 4px);
+        }
+        &[data-count="2"]{
+          input[type=radio] + label{
+            max-width: calc(50% - 4px);
+          }
+        }
+      }
+      .Msell-Variant__item + .Msell-Variant__Item{
+        margin-top: 12px;
+      }
+    }
+    &__Footer{
+      background: #FAFCFF;
+      box-shadow: 0px -1px 0px 0px #E1E3E5 inset;
+      padding: 20px;
+    }
+  }
+  .Msell-Btn-Choose-Variant{
+    width: 100%;
+    border-radius: 4px;
+    // border: 1px solid #BABFC3;
+    background: var(--msell-primary-color);
+    box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08), 0px -1px 0px 0px rgba(0, 0, 0, 0.20) inset;
+    span{
+      color: var(--msell-secondary-color);
+    }
+    &:hover{
+      background-color: #F0FAFF;
+    }
+    &:focus, &:active{
+      background-color: #D9D9D9;
+    }
+  }
+}

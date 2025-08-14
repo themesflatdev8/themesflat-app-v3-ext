@@ -1,0 +1,27 @@
+<div class="Msell-BClassic__Item" product-id="{{ prod.id }}">
+  {{#unless isHideCheckbox}}
+    <div class="Msell-BClassic__ItemCheckbox">
+      {{> ./../../components/checkbox/index id=(concat 'Msell-bundle-' widgetID '-p' prod.id '-select') checked=checked disabled=disabled }}
+    </div>
+  {{/unless}}
+  
+  <div class="Msell-BClassic__ItemContent">
+    <a title="{{ prod.title }}" href="{{originUrl}}/products/{{prod.handle}}" target="_blank">{{ prod.title }}</a>
+    <div class="Msell-BClassic__ItemPrice">
+      <span class="Msell-Bundle__PriceDiscount Msell-BClassic__ItemPrice--Discount"></span>
+      <div class="Msell-BClassic__ItemSubPrice">
+        <span class="Msell-Bundle__PriceDefault Msell-BClassic__ItemPrice--Default"></span>
+        <span class="Msell-Bundle__PriceRegular Msell-BClassic__ItemPrice--Regular">{{{ prod.price }}}</span>
+      </div>
+    </div>
+    <div class="Msell-BClassic__ItemFooter">
+      {{#if settings.useQuantity}}
+        {{> ./../../components/quantity/index }}
+      {{/if}}
+      <div class="Msell-BClassic__ItemVariant Msell-Variant" id="Msell-bundle-{{widgetID}}-p{{prod.id}}-variant"></div>
+    </div>
+  </div>
+  <div class="Msell-BClassic__ItemMedia">
+    <img class="Msell-Media" src="{{#if prod.image }}{{prod.image}}{{else}}data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=={{/if}}" alt="" />
+  </div>
+</div>

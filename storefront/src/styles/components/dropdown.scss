@@ -1,0 +1,78 @@
+$className: ".Msell-Dropdown";
+#{$className}{
+  &__Button{
+    // position: relative;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color .2s ease-in-out;
+  }
+  &__Panel{
+    visibility: hidden;
+    opacity: 0;
+    display: none;
+    position: fixed;
+    z-index: 2147483649;
+    user-select: none;
+    max-height: 100%;
+    // overflow: hidden;
+    transform-origin: left top;
+    transition: opacity .3s cubic-bezier(.25,.8,.25,1), visibility .3s cubic-bezier(.25,.8,.25,1);
+    &#{$className}-Show{
+      visibility: visible !important;
+      opacity: 1;
+      display: block;
+    }
+    &-Arrow--Up{
+      &::after{
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #FFFFFF;
+        top: -8px;
+      }
+    }
+    &-Arrow--Down{
+      &::after{
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid #FFFFFF;
+        bottom: -8px;
+      }
+    }
+    &-Arrow--Left{
+      &::after{
+        left: 60px
+      }
+    }
+    &-Arrow--Right{
+      &::after{
+        right: 60px
+      }
+    }
+    &-Arrow--Center{
+      &::after{
+        left: calc(50% - 10px)
+      }
+    }
+  }
+  @media screen and (max-width: 480px) {
+    &__Panel{
+      width: 100% !important;
+      min-width: unset !important;
+      max-width: unset !important;
+      position: fixed;
+      bottom: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      z-index: 99999999;
+      top: unset !important;
+    }
+  }
+}

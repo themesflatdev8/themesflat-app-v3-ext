@@ -1,0 +1,27 @@
+<div class="Msell-BSwiper__Item Msell-Swiper__Item" product-id="{{ prod.id }}">
+  <div class="Msell-BSwiper__ItemWrap">
+    {{#unless isHideCheckbox}}
+      <div class="Msell-BSwiper__ItemCheckbox">
+        {{> ./../../components/checkbox/index id=(concat 'Msell-bundle-' widgetID '-p' prod.id '-select') checked=checked disabled=disabled }}
+      </div>
+    {{/unless}}
+    <div class="Msell-BSwiper__ItemMedia">
+      <img class="Msell-Media" src="{{#if prod.image }}{{prod.image}}{{else}}data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=={{/if}}" alt="" />
+    </div>
+    <div class="Msell-BSwiper__ItemContent">
+      <a title="{{ prod.title }}" href="{{originUrl}}/products/{{prod.handle}}" target="_blank">{{ prod.title }}</a>
+      <div class="Msell-BSwiper__ItemPrice">
+        <span class="Msell-Bundle__PriceDiscount Msell-BSwiper__ItemPrice--Discount"></span>
+        <div class="Msell-BSwiper__ItemSubPrice">
+          <span class="Msell-Bundle__PriceDefault Msell-BSwiper__ItemPrice--Default"></span>
+          <span class="Msell-Bundle__PriceRegular Msell-BSwiper__ItemPrice--Regular">{{{ prod.price }}}</span>
+        </div>
+      </div>
+      {{#if settings.useQuantity}}
+        {{> ./../../components/quantity/index }}
+      {{/if}}
+      <div class="Msell-BSwiper__ItemVariant Msell-Variant" id="Msell-bundle-{{widgetID}}-p{{prod.id}}-variant"></div>
+    </div>
+  </div>
+  <div class='Msell-Swiper__Separator Msell-BSwiper__Separator'>+</div>
+</div>

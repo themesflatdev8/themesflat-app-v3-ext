@@ -1,0 +1,126 @@
+.Msell-CountdownTimer{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  &-Card{
+    position: relative;
+    display: flex;
+    align-items: center;
+    // gap: 2px;
+    background-color: var(--msell-outstand-color, #ff590d);
+    border-radius: 4px;
+    padding: 2px 6px;
+    height: 28px;
+    >span{
+      color: var(--msell-secondary-color);
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+      letter-spacing: -0.2px;
+      text-align: center;
+      white-space: nowrap;
+    }
+    // &:nth-child(n+2):nth-child(-n+3):before{
+    //   content: '';
+    //   position: absolute;
+    //   bottom: 16px;
+    //   left: -6px;
+    //   width: 3px;
+    //   height: 3px;
+    //   border-radius: 50%;
+    //   background-color: var(--msell-outstand-color, #ff590d);
+    // }
+    // &:nth-child(n+2):nth-child(-n+3):after{
+    //   content: '';
+    //   position: absolute;
+    //   bottom: 9px;
+    //   left: -6px;
+    //   width: 3px;
+    //   height: 3px;
+    //   border-radius: 50%;
+    //   background-color: var(--msell-outstand-color, #ff590d);
+    // }
+  }
+  &-Days{
+    margin-right: -6px;
+  }
+  &-Minutes, &-Seconds{
+    &:before{
+      content: '';
+      position: absolute;
+      bottom: 16px;
+      left: -6px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: var(--msell-outstand-color, #ff590d);
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      bottom: 9px;
+      left: -6px;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background-color: var(--msell-outstand-color, #ff590d);
+    }
+  }
+  &-FlipCard{
+    position: relative;
+    float: left;
+    width: 12px;
+    height: 24px;
+    margin: 0px;
+    border-radius: 4px;
+    overflow: hidden;
+    color: var(--msell-secondary-color);
+  }
+  &-Top, &-Bottom {
+    overflow: hidden;
+    position: absolute;
+    width: 12px;
+    height: 24px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.2px;
+    text-align: center;
+  }
+  &-Top{
+    border-radius: 4px 4px 0px 0px;
+    line-height: 24px;
+    color: var(--msell-secondary-color);;
+    transform: translateY(0);
+    &.Msell-CountdownTimer-Flipped {
+      transform: translateY(-100%);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  &-Bottom{
+    bottom: 0;
+    border-radius: 0px 0px 4px 4px;
+    line-height: 24px;
+    color: #EFEFEF;
+    transform: translateY(100%);
+    &.Msell-CountdownTimer-Flipped {
+      transform: translateY(0);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  &--Expire{
+    .Msell-CountdownTimer{
+      &-Card{
+        background-color: #D40000;
+        &:nth-child(n+2):nth-child(-n+3):before{
+          background-color: #D40000;
+        }
+        &:nth-child(n+2):nth-child(-n+3):after{
+          background-color: #D40000;
+        }
+      }
+    }
+  }
+}

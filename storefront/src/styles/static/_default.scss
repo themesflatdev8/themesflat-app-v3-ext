@@ -1,0 +1,41 @@
+html.Msell-Modal-Opened, body.Msell-Modal-Opened{
+  overflow: hidden !important;
+  width: 100%;
+}
+.Msell-Page-Width{
+  margin: 32px auto;
+}
+
+[msell-hidden-section]{
+  width: 1px !important;
+  height: 0px !important;
+  overflow: hidden !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+[msell-hidden]{
+  display: none !important;
+}
+[msell-blur]{
+  opacity: 0 !important;
+}
+
+[msell-vd-hidden-section]{
+  width: 1px !important;
+  height: 0px !important;
+  overflow: hidden !important;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+[msell-vd-hidden]{
+  display: none !important;
+}
+[msell-vd-blur]{
+  opacity: 0 !important;
+}
+
+.Msell{
+  &-Img{
+    max-width: 100%;
+  }
+}

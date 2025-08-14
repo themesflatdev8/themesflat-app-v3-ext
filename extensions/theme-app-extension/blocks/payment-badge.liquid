@@ -1,0 +1,18 @@
+{% render 'script' %}
+<script>
+    shopifyMSellPaymentBadge = 1;
+</script>
+
+{% schema %}
+    {
+        "name": "Payment Badge",
+        "target": "section",
+        "class": "Msell-Payment-Badge-Block",
+        "stylesheet": "msell.css",
+        "javascript": "msell.js",
+        "enabled_on": {
+            "templates": ["product"]
+        },
+        "settings":[]
+    }
+{% endschema %}

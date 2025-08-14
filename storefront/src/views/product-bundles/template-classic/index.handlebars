@@ -1,0 +1,101 @@
+<div class="Msell-BClassic__Wrap">
+  <div class="Msell-BClassic__Header">
+    <div class="Msell-BClassic__HeaderTitle">
+      <h2 class="Msell-BClassic__Title">{{settings.title}}</h2>
+      {{#if settings.subTitle}}
+        <p>{{settings.subTitle}}</p>
+      {{/if}}
+    </div>
+    <div class="Msell-BClassic__Box Msell-BClassic__Box--Header">
+      <div class="Msell-BClassic__BoxSecond">
+        <div class="Msell-BClassic__Info">
+          <div class="Msell-BClassic__Total">
+            {{#if settings.contentTotal}}
+              <span class="Msell-Bundle__TotalLabel Msell-BClassic__TotalLabel">{{{settings.contentTotal}}}</span>
+            {{/if}}
+            <div class="Msell-BClassic__SubTotal">
+              <span class="Msell-Bundle__Badge Msell-Bundle__Discount">{{{discount}}}</span>
+              <div class="Msell-BClassic__TotalSale">
+                <span class="Msell-Bundle__TotalDefault Msell-BClassic__TotalDefault"></span>
+                <span class="Msell-Bundle__TotalRegular Msell-BClassic__TotalRegular"></span>
+              </div>
+            </div>
+          </div>
+          {{#if promotionalContent}}
+            <div class="Msell-Bundle__Promotion">{{{promotionalContent}}}</div>
+          {{/if}}
+        </div>
+        {{#if timer.active}}
+          <div class="Msell-BClassic__BoxFirst">
+            <msell-countdown-timer></msell-countdown-timer>
+          </div>
+        {{/if}}
+        <button class="{{classAddToCard}} Msell-Button-AddToCart">
+          <span>{{settings.contentAddToCartButton}}</span>
+          <div class="Msell-Spinner">
+            <svg aria-hidden="true" focusable="false" class="Msell-Spinner-Svg" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+              <circle class="Msell-Spinner-Path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="Msell-BClassic__Content">
+    <msell-swiper>
+      <div class="Msell-BClassic__List Msell-Swiper__List">
+      </div>
+      <div class="Msell-BClassic__Buttons Msell-Swiper-Buttons">
+        <button type="button" class="Msell-BClassic-Button" name="previous" aria-label="Slide previous">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z">
+          </path></svg>
+        </button>
+        <div class="Msell-BClassic__Counter">
+          <span class="Msell-Swiper-Counter--Current"></span>
+          <span aria-hidden="true"> / </span>
+          <span class="Msell-Swiper-Counter--Total"></span>
+        </div>
+        <button type="button" class="Msell-BClassic-Button" name="next" aria-label="Slide next">
+          <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z">
+          </path></svg>
+        </button>
+      </div>
+    </msell-swiper>
+  <div class="Msell-BClassic__Box Msell-BClassic__Box--Footer">
+    {{#if timer.active}}
+      <div class="Msell-BClassic__BoxFirst">
+        <msell-countdown-timer></msell-countdown-timer>
+      </div>
+    {{/if}}
+    <div class="Msell-BClassic__BoxSecond">
+      <div class="Msell-BClassic__Info">
+        <div class="Msell-BClassic__Total">
+          {{#if settings.contentTotal}}
+            <span class="Msell-Bundle__TotalLabel Msell-BClassic__TotalLabel">{{{settings.contentTotal}}}</span>
+          {{/if}}
+          <div class="Msell-BClassic__SubTotal">
+            <span class="Msell-Bundle__Badge Msell-Bundle__Discount">{{{discount}}}</span>
+            <div class="Msell-BClassic__TotalSale">
+              <span class="Msell-Bundle__TotalDefault Msell-BClassic__TotalDefault"></span>
+              <span class="Msell-Bundle__TotalRegular Msell-BClassic__TotalRegular"></span>
+            </div>
+          </div>
+        </div>
+        {{#if promotionalContent}}
+          <div class="Msell-Bundle__Promotion">{{{promotionalContent}}}</div>
+        {{/if}}
+      </div>
+      <button class="{{classAddToCard}} Msell-Button-AddToCart">
+        <span>{{settings.contentAddToCartButton}}</span>
+        <div class="Msell-Spinner">
+          <svg aria-hidden="true" focusable="false" class="Msell-Spinner-Svg" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="Msell-Spinner-Path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+</div>

@@ -1,0 +1,52 @@
+.Msell-Visually-Hidden{
+  position: absolute!important;
+  overflow: hidden;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  word-wrap: normal!important;
+}
+
+.Msell-Animation {
+	&.Msell-Shake {
+		animation: msellShake 1s infinite;
+	}
+	&.Msell-FadeInDown {
+		animation: msellFadeInDown 4s infinite;
+		animation-delay: 1s;
+	}
+	&.Msell-FlipInX {
+		animation: msellFlipInX 4s infinite;
+		animation-delay: 1s;
+	}
+	&.Msell-FlipInY {
+		animation: msellFlipInY 4s infinite;
+		animation-delay: 1s;
+	}
+	&.Msell-ShakeNew {
+		animation: msellShakeNew 1s infinite;
+	}
+	&.Msell-ShakeUpDown {
+		animation: msellShakeUpDown 1s infinite;
+	}
+	&.Msell-ShakeLeftRight {
+		animation: msellShakeLeftRight 1s infinite;
+	}
+	&.Msell-Swing {
+		animation: msellSwing 4s infinite;
+		animation-delay: 1s;
+	}
+	&.Msell-ShakeBottom {
+		animation: msellShakeBottom 1s infinite;
+	}
+	&.Msell-Pulse {
+		animation: msellPulse 1s infinite;
+	}
+	&.Msell-Tada {
+		animation: msellTada 4s infinite;
+		animation-delay: 1s;
+	}
+}

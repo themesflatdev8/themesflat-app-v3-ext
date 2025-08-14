@@ -1,0 +1,31 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "d984f5d5c1859b634684e93261fc1e13"
+name = "M-Sell"
+application_url = "https://spy.msell.app/"
+embedded = true
+
+[webhooks]
+api_version = "2025-01"
+
+  [[webhooks.subscriptions]]
+  uri = "https://spy-api.msell.app/api/webhook/customers/data_request"
+  compliance_topics = [ "customers/data_request" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://spy-api.msell.app/api/webhook/customers/redact"
+  compliance_topics = [ "customers/redact" ]
+
+  [[webhooks.subscriptions]]
+  uri = "https://spy-api.msell.app/api/webhook/shop/redact"
+  compliance_topics = [ "shop/redact" ]
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_discounts,read_orders,read_price_rules,read_products,read_themes,write_discounts,write_price_rules"
+
+[auth]
+redirect_urls = [ "https://spy-api.msell.app/api/auth/callback" ]
+
+[pos]
+embedded = false

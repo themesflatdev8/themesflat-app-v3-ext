@@ -1,0 +1,45 @@
+$classNamePaymentBadge: ".Msell-Payment-Badge";
+
+#{$classNamePaymentBadge}{
+  --msell-payment-badge-width: var(--msell-payment-badge-width-desktop);
+  --msell-payment-badge-height: var(--msell-payment-badge-height-desktop);
+  @media (max-width: 768px) {
+    --msell-payment-badge-width: var(--msell-payment-badge-width-mobile);
+    --msell-payment-badge-height: var(--msell-payment-badge-height-mobile);
+  }
+  margin: 20px 0;
+  h2{
+    font-weight: 500;
+    font-size: var(--msell-payment-badge-font-size);
+    line-height: var(--msell-payment-badge-line-height);
+    color: var(--msell-payment-badge-text-color);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  &__List{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+  }
+  &__Item{
+    width: var(--msell-payment-badge-width);
+    height: var(--msell-payment-badge-height);
+    img{
+      width: var(--msell-payment-badge-width);
+      height: var(--msell-payment-badge-height);
+    }
+  }
+  &[data-template="inline"]{
+    padding: 0 8px 20px 8px;
+    border-bottom: 1px solid #e1e3e5;
+  }
+  &[data-template="box"]{
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--msell-payment-badge-border-color);
+    background-color: var(--msell-payment-badge-background-color);
+  }
+}

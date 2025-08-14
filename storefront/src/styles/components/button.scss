@@ -1,0 +1,100 @@
+.Msell{
+  &-Button{
+    font-family: inherit;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    padding: 8px 16px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    white-space: nowrap;
+    border-width: 1px;
+    border-color: transparent;
+    border-style: solid;
+    height: 46px;
+    cursor: pointer;
+    transition: background 0.2s ease-in-out;
+    box-sizing: border-box;
+    span{
+      font-style: normal;
+      font-weight: 500;
+      font-size: 15px;
+      line-height: 18px;
+      pointer-events: none;
+    }
+    &-AddToCart{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: row;
+      white-space: nowrap;
+      border: 1px solid var(--msell-primary-color);
+      box-shadow: none;
+      background-color: var(--msell-primary-color);
+      transition: background-color 0.2s linear;
+      border-radius: var(--msell-border-radius, 8px);
+      animation: msellShake 6s infinite;
+      span{
+        color: var(--msell-secondary-color);
+      }
+      >svg{
+        width: 17px !important;
+        height: 15px !important;
+        fill: var(--msell-secondary-color);
+      }
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        // opacity: 0.2;
+        // background-color: var(--msell-primary-color);
+        // transform: translateX(-100%);
+        // box-sizing: border-box;
+        // z-index: -1;
+        transition: all 0.2s linear;
+        z-index: 1;
+        border-radius: var(--msell-border-radius, 8px);
+      }
+    
+      &:not(:disabled):hover {
+        // box-shadow: 0 0 10px 0 var(--msell-primary-color) inset, 0 0 10px 4px var(--msell-primary-color);
+        &:before {
+          // transform: translateX(0);
+          // background-color: var(--msell-primary-color);
+          // opacity: 0.05;
+          box-shadow: 0 0 0 -0.3px rgba(255,255,255, 0.05),0 0 0 2px var(--msell-primary-color);
+        }
+      }
+      &:focus, &:active{
+        background-color: var(--msell-primary-color);
+      }
+    }
+    &[loading=true]{
+      pointer-events: none;
+      cursor: not-allowed;
+      user-select: none;
+      opacity: 0.6;
+      > *{
+        display: none;
+      }
+      .Msell-Spinner{
+        display: inline-block !important;
+        animation: msellRotator 1.4s linear infinite;
+        &-Path{
+          stroke: var(--msell-secondary-color);
+        }
+      }
+    }
+    &:disabled{
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: all !important;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{% render 'script' %}
+<script>
+    shopifyMSellTrustBadge = 1;
+</script>
+
+{% schema %}
+    {
+        "name": "Trust Badge",
+        "target": "section",
+        "class": "Msell-Trust-Badge-Block",
+        "stylesheet": "msell.css",
+        "javascript": "msell.js",
+        "enabled_on": {
+            "templates": ["product"]
+        },
+        "settings":[]
+    }
+{% endschema %}

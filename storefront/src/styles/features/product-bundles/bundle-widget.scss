@@ -1,0 +1,195 @@
+$className: ".Msell-Bundle";
+
+#{$className}{
+  background: var(--msell-card-background-color, #FFFFFF);
+  // box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  // border-radius: 12px;
+  // overflow: hidden;
+  margin: 50px auto 24px;
+  max-width: 100%;
+  // overflow: hidden;
+  @media screen and (max-width: 750px) {
+    // margin-top: 36px;
+    margin-bottom: 36px;
+  }
+  &__Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  &__Title{
+    color: #1e1212;
+    letter-spacing: -0.2px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    margin: 0;
+  }
+  &__Badge{
+    position: relative;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    background: var(--msell-outstand-color, #ff590d);
+    color: var(--msell-secondary-color);;
+    z-index: 1;
+    padding: 2px 8px 2px 8px;
+    // border-radius: 20px;
+    // svg{
+    //   margin: 0 4px 0 2px;
+    // }
+    // &::after{
+    //   content: "";
+    //   position: absolute;
+    //   width: 20px;
+    //   height: 20px;
+    //   left: 3px;
+    //   top: 0;
+    //   bottom: 0;
+    //   background: var(--msell-outstand-color, #ff590d);
+    //   transform: rotate(45deg);
+    //   z-index: -1;
+    //   margin: auto;
+    //   border-top-right-radius: 2px;
+    //   border-bottom-right-radius: 2px;
+    // }
+    // &::before{
+    //   content: "";
+    //   position: absolute;
+    //   right: 0;
+    //   top: 0;
+    //   width: calc(100% - 8px);
+    //   height: 100%;
+    //   background: var(--msell-outstand-color, #ff590d);
+    //   z-index: -1;
+    //   border-top-left-radius: 2px;
+    //   border-bottom-left-radius: 2px;
+    // }
+  }
+  &__Checkbox{
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 1.5px;
+    input{
+      margin: 0;
+      padding: 0;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+  }
+  &__Quantity{
+    color: #1e1212;
+    position: relative;
+    width: 100px;
+    min-width: 100px;
+    display: flex;
+    align-items: center;
+    min-height: 16px;
+    button{
+      font-family: inherit;
+      flex-shrink: 0;
+      font-size: 16px;
+      border: 1px solid var(--msell-border-color);
+      border-radius: var(--msell-border-radius, 8px);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e1212;
+      padding: 4px;
+      background: transparent;
+      width: 36px;
+      height: 36px;
+      &:disabled{
+        cursor: not-allowed;
+        // pointer-events: none;
+        opacity: 0.4;
+      }
+      svg{
+        pointer-events: none;
+        width: 10px;
+        height: 10px;
+        fill: #1e1212;
+      }
+      &:hover:not(:disabled){
+        svg{
+          transform: scale(1.2);
+        }
+      }
+    }
+    input{
+      width: 100%;
+      padding: 0;
+      border: none;
+      outline: none;
+      background: transparent;
+      box-shadow: none;
+      margin: 0 4px;
+      text-align: center;
+      font-size: 13px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 16px;
+      color: #1e1212;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      /* Firefox */
+      &[type=number] {
+        -moz-appearance: textfield;
+      }
+      &:disabled{
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+  }
+  &__Promotion{
+    color: var(--msell-outstand-color, #ff590d);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    span{
+      color: var(--msell-outstand-color, #ff590d);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 16px;
+    }
+  }
+  &--tablet{
+    #{$className}{
+      &__Header{
+        flex-direction: column-reverse;
+        align-items: unset;
+      }
+    }
+  }
+  &--Mobile{
+    #{$className}{
+      &__Header{
+        flex-direction: column-reverse;
+        align-items: unset;
+      }
+      &__Title{
+        font-size: 20px;
+      }
+    }
+  }
+}

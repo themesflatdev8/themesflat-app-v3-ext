@@ -1,0 +1,17 @@
+.Msell{
+  &-Spinner {
+    display: none;
+    pointer-events: none;
+    z-index: 2;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    .Msell-Spinner-Path{
+      stroke-dasharray: 280;
+      stroke-dashoffset: 0;
+      transform-origin: center;
+      stroke: rgb(18, 18, 18);
+      animation: msellDash 1.4s ease-in-out infinite;
+    }
+  }
+}

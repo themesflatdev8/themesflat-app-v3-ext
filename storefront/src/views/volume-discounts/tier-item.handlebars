@@ -1,0 +1,33 @@
+<div class="Msell-VD__Item {{#if isBest}}Msell-VD__Item--Active{{/if}} {{#if isBest}}Msell-VD__Item--popular{{/if}}" data-tier-id="{{ tier.id }}">
+  <div class="Msell-VD__ItemContent">
+    <div class="Msell-VD__ItemSelect">
+    </div>
+    <div class="Msell-VD__ItemInfo">
+      <span class="Msell-VD__ItemName">{{{tier.name}}}</span>
+      {{#if tier.useDiscount}}
+        <span class="Msell-VD__ItemDiscount--Primary">{{{promotionalContent}}}</span>
+      {{else}}
+        <span class="Msell-VD__ItemDiscount--Subdued">{{{promotionalContent}}}</span>
+      {{/if}}
+    </div>
+    <div class="Msell-VD__ItemPrice">
+      {{#if tier.useDiscount}}
+        <span class="Msell-VD__PriceRegular Msell-VD__ItemPrice--Regular">{{{salePrice}}}</span>
+        <div class="Msell-VD__ItemPrice-Sale">
+          <span class="Msell-VD__PriceDefault Msell-VD__ItemPrice--Default">{{{regularPrice}}}</span>
+        </div>
+      {{else}}
+        <span class="Msell-VD__ItemPrice--Regular">{{{regularPrice}}}</span>
+      {{/if}}
+    </div>
+  </div>
+  {{#if hasVariants}}
+    <div class="Msell-VD__ItemVariants"></div>
+  {{/if}}
+  {{#if isBest}}
+    <div class="Msell-VD__Badge">
+      <span class="Msell-VD__BadgeIcon">+</span>
+      {{{titleBest}}}
+    </span>
+  {{/if}}
+</div>

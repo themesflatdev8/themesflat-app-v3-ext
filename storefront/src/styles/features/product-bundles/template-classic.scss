@@ -1,0 +1,577 @@
+$className: ".Msell-BClassic";
+$classNameWidget: ".Msell-Bundle";
+$classNameVariant: ".Msell-Variant";
+
+#{$className}{
+  msell-swiper{
+    position: relative;
+    display: block;
+  }
+  &__Wrap{
+    position: relative;
+    display: block;
+    margin: 0 auto;
+  }
+  &__Header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    &Title{
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      p{
+        color: #1e1212;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        opacity: 0.6;
+        margin: 0;
+      }
+    }
+  }
+  &__Title{
+    color: #1e1212;
+    letter-spacing: -0.2px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 24px;
+    margin: 0;
+  }
+  &__Content{
+    position: relative;
+  }
+  &__List{
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    overflow-x: auto;
+    transition: transform 0.15s linear;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  &__Group{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+  }
+  &__Item{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    scroll-snap-align: start;
+    border-radius: var(--msell-border-radius);
+    overflow: hidden;
+    border: 1px solid var(--msell-border-color);
+    background-color: var(--msell-card-background-color);
+    padding: 12px;
+    max-width: calc(50% - 8px);
+    width: 100%;
+    &Media{
+      position: relative;
+      display: block;
+      width: 100px;
+      min-width: 100px;
+      aspect-ratio: 1;
+      overflow: hidden;
+      text-decoration: none;
+      margin: 0;
+      padding: 0;
+      img{
+        width: 100%;
+        height: 100%;
+        object-fit: var(--msell-image-fit, contain);
+        transition: all 0.4s linear;
+        border: 1px solid rgba(0, 0, 0, 0.04);
+        border-radius: 4px;
+      }
+      &:hover{
+        img{
+          transform: scale(1.04);
+        }
+      }
+    }
+    &Checkbox{
+      display: flex;
+      align-items: center;
+      padding: 12px 3px 4px 3px;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+      border: 0.5px solid rgba(0, 0, 0, 0.05);
+      border-top: none;
+      background: rgba(0, 0, 0, 0.05);
+      margin-top: -12px;
+    }
+    &Content{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      gap: 12px;
+      margin-top: 2px;
+      a{
+        display: block;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: #1e1212;
+        text-overflow: ellipsis; 
+        overflow: hidden; 
+        white-space: nowrap;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        &:hover{
+          text-decoration: underline;
+          text-underline-offset: 2px;
+        }
+      }
+    }
+    &SubPrice{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 4px;
+    }
+    &Price{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+      gap: 6px;
+      &--Regular{
+        display: block;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 16px;
+        color: #1e1212;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+      }
+      &--Default{
+        display: inline;
+        font-style: italic;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 12px;
+        color: #1e1212;
+        text-decoration: line-through;
+        white-space: nowrap;
+        padding: 0;
+        margin: 0;
+        opacity: 0.4;
+      }
+      &--Discount{
+        display: inline-flex;
+        align-items: center;
+        color: var(--msell-outstand-color);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 16px;
+        padding: 1px 6px;
+        // border-radius: 20px;
+        border: 0.5px solid var(--msell-outstand-color);
+        margin: 0;
+        position: relative;
+      }
+      &--Regular:empty, &--Default:empty, &--Discount:empty{
+        display: none !important;
+      }
+    }
+    &Footer{
+      display: flex;
+      gap: 8px;
+    }
+    &Variant{
+      flex-grow: 1;
+      max-width: 252px;
+    }
+    #{$classNameVariant}{
+      &__Button{
+        
+      }
+    }
+    #{$classNameWidget}{
+      &__Quantity{
+        border: 1px solid var(--msell-border-color);
+        border-radius: 8px;
+        height: 36px;
+        &-Button{
+          border: none;
+        }
+      }
+    }
+  }
+  &__SubTotal{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+  }
+  &__Total{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    &Label{
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 24px;
+      color: #1e1212;
+      letter-spacing: -0.2px;
+      padding: 0;
+      margin: 0;
+    }
+    &Regular{
+      font-style: normal;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 28px;
+      color: #1e1212;
+      letter-spacing: -0.3px;
+      padding: 0;
+    }
+    &Default{
+      color: #1e1212;
+      font-size: 13px;
+      font-style: italic;
+      font-weight: 400;
+      line-height: 24px;
+      text-decoration: line-through;
+      padding: 0;
+      margin: 0;
+      opacity: 0.4;
+    }
+    &Regular:empty, &Default:empty{
+      display: none !important;
+    }
+    &Sale{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: flex-end;
+      gap: 8px;
+    }
+  }
+  &__Box{
+    display: flex;
+    align-items: center;
+    // position: relative;
+    &First{
+      display: flex;
+      align-items: center;
+      border-radius: 8px;
+    }
+    &Second{
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+  &__Buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 12px;
+  }
+  &-Button{
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--msell-primary-color);
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    svg{
+      fill: var(--msell-secondary-color) !important;
+      height: 12px !important;
+      width: 12px !important;
+    }
+    &[name="next"]{
+    
+      svg{
+        transform: rotate(-90deg);
+      }
+    }
+    &[name="previous"]{
+     
+      svg {
+        transform: rotate(90deg);
+      }
+    }
+    &:not([disabled]):hover {
+      transform: scale(1.1);
+    }
+    &[disabled] {
+      opacity: 0.3 !important;
+      cursor: not-allowed;
+    }
+  }
+  &__Counter{
+    display: flex;
+    justify-content: center;
+    min-width: 44px;
+    span{
+      font-size: 12px;
+      display: inline;
+      font-weight: 400;
+      line-height: 12px;
+      color: #1e1212;
+    }
+  }
+  .Msell-Button{
+    margin: 0;
+    min-width: 140px;
+  }
+  &--Desktop{
+    padding: 12px 0 24px;
+    // max-width: 1154px;
+    #{$className}{
+      &__Wrap{
+        max-width: 1100px;
+        padding: 0;
+      }
+      &__Box{
+        &First{
+          position: absolute;
+          top: -34px;
+          left: 50%;
+          transform: translateX(-50%);
+          background: #FFF;
+          padding: 8px;
+          border-radius: 8px;
+          border: 1px solid var(--msell-outstand-color, #ff590d);
+        }
+        &--Footer{
+          display: none;
+        }
+      }
+    }
+  }
+  &--Tablet{
+    padding: 20px 4px;
+    // max-width: 750px;
+    #{$className}{
+      &__Wrap{
+        max-width: unset;
+        // max-width: 516px;
+        padding: 0;
+      }
+      &__Header{
+        justify-content: center;
+      }
+      &__Box{
+        flex-direction: row;
+        gap: 32px;
+        margin-top: 16px;
+        padding-top: 16px;
+        &:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -24px;
+          right: -24px;
+          height: 1px;
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        &First{
+          border: none;
+          padding-right: 0;
+          margin-right: 0;
+        }
+        &Second{
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+        }
+        &--Header{
+          display: none;
+        }
+        &--Footer{
+          display: flex;
+        }
+      }
+      &__Item{
+        &Media{
+          width: 80px;
+          min-width: 80px;
+        }
+        &Footer{
+          flex-direction: column;
+        }
+      }
+    }
+  }
+  &--Mobile-LG{
+    padding: 24px 4px;
+    // max-width: 750px;
+    #{$className}{
+      &__Wrap{
+        max-width: unset;
+        // max-width: 516px;
+        padding: 0;
+      }
+      &__Header{
+        justify-content: center;
+      }
+      &__Box{
+        position: relative;
+        flex-direction: row;
+        gap: 32px;
+        margin-top: 16px;
+        padding-top: 20px;
+        &:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -24px;
+          right: -24px;
+          height: 1px;
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        &First{
+          border: none;
+          padding-right: 0;
+          margin-right: 0;
+        }
+        &Second{
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+        }
+        &--Header{
+          display: none;
+        }
+        &--Footer{
+          display: flex;
+        }
+      }
+      &__List{
+        flex-direction: column;
+        gap: 16px;
+        max-height: 560px;
+      }
+      &__Item{
+        max-width: unset;
+        &Media{
+          width: 100px;
+          min-width: 100px;
+        }
+        &Footer{
+          flex-direction: column;
+        }
+      }
+      &__Buttons{
+        display: none !important;
+      }
+    }
+  }
+  &--Mobile-SM{
+    padding: 24px 4px;
+    // max-width: 345px;
+    #{$className}{
+      &__Wrap{
+        max-width: unset;
+        padding: 0;
+      }
+      &__Header{
+        justify-content: center;
+      }
+      &__Box{
+        position: relative;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 16px;
+        padding-top: 20px;
+        &:before{
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background-color: rgba(0, 0, 0, 0.05);
+        }
+        &First{
+          justify-content: center;
+          border: none;
+          padding-right: 0;
+          margin-right: 0;
+        }
+        &Second{
+          flex-direction: column;
+          align-items: flex-end;
+          gap: 20px;
+          margin-top: 20px;
+        }
+        &--Header{
+          display: none;
+        }
+        &--Footer{
+          display: block;
+        }
+      }
+      &__List{
+        flex-direction: column;
+        gap: 12px;
+        max-height: 480px;
+      }
+      &__Group{
+        gap: 12px;
+      }
+      &__Item{
+        max-width: unset;
+        &Media{
+          width: 68px;
+          min-width: 68px;
+        }
+        &Footer{
+          flex-direction: column;
+        }
+      }
+      &__Info{
+        width: 100%;
+      }
+      &__SubTotal{
+        margin-left: auto;
+      }
+      &__Buttons{
+        display: none !important;
+      }
+    }
+    .Msell-Button{
+      width: 100%;
+    }
+  }
+}

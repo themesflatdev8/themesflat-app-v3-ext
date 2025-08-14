@@ -1,0 +1,425 @@
+
+@-webkit-keyframes msellAnimateBottom {
+  from {
+    bottom: -300px;
+    opacity: 0
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1
+  }
+}
+
+@keyframes msellAnimateBottom {
+  from {
+    bottom: -300px;
+    opacity: 0
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1
+  }
+}
+
+@-webkit-keyframes msellRotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes msellRotator {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@-webkit-keyframes msellDash {
+  0% {
+    stroke-dashoffset: 280;
+  }
+  50% {
+    stroke-dashoffset: 75;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 280;
+    transform: rotate(450deg);
+  }
+}
+@keyframes msellDash {
+  0% {
+    stroke-dashoffset: 280;
+  }
+  50% {
+    stroke-dashoffset: 75;
+    transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 280;
+    transform: rotate(450deg);
+  }
+}
+
+@keyframes msellShake {
+  1% {
+      transform: translate(1px,1px) rotate(0)
+  }
+
+  2% {
+      transform: translate(-1px,-2px) rotate(-1deg)
+  }
+
+  4% {
+      transform: translate(-3px) rotate(1deg)
+  }
+
+  6% {
+      transform: translate(3px,2px) rotate(0)
+  }
+
+  8% {
+      transform: translate(1px,-1px) rotate(1deg)
+  }
+
+  10% {
+      transform: translate(-1px,2px) rotate(-1deg)
+  }
+
+  12% {
+      transform: translate(-3px,1px) rotate(0)
+  }
+
+  14% {
+      transform: translate(3px,1px) rotate(-1deg)
+  }
+
+  16% {
+      transform: translate(-1px,-1px) rotate(1deg)
+  }
+
+  18% {
+      transform: translate(1px,2px) rotate(0)
+  }
+
+  20% {
+      transform: translate(1px,-2px) rotate(-1deg)
+  }
+
+  22% {
+    transform: translate(0,0) rotate(0)
+  }
+}
+
+@keyframes msellOpenSalePopUpTop {
+	from {
+		opacity: 0;
+		top: -100px;
+	}
+	to {
+		opacity: 1;
+		top: 32px;
+	}
+}
+
+@keyframes msellCloseSalePopUpTop {
+	from {
+		opacity: 1;
+		top: 32px;
+	}
+	to {
+		opacity: 0;
+		top: -100px;
+	}
+}
+
+@keyframes msellOpenSalePopUpBottom {
+	from {
+		opacity: 0;
+		bottom: -100px;
+	}
+	to {
+		opacity: 1;
+		bottom: 32px;
+	}
+}
+
+@keyframes msellCloseSalePopUpBottom {
+	from {
+		opacity: 1;
+		bottom: 32px;
+	}
+	to {
+		opacity: 0;
+		bottom: -100px;
+	}
+}
+
+@keyframes msellInfiniteBottomToTop {
+	0% {
+		transform: translateY(100%);
+		opacity: 0;
+	}
+	10% {
+		opacity: 1;
+	}
+	90% {
+		transform: translateY(-50%);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+}
+
+//Add to cart animation
+@keyframes msellShake {
+	0% {
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+	10% {
+		transform: translate(-1px, -2px) rotate(-1deg);
+	}
+	20% {
+		transform: translate(-3px, 0px) rotate(1deg);
+	}
+	30% {
+		transform: translate(3px, 2px) rotate(0deg);
+	}
+	40% {
+		transform: translate(1px, -1px) rotate(1deg);
+	}
+	50% {
+		transform: translate(-1px, 2px) rotate(-1deg);
+	}
+	60% {
+		transform: translate(-3px, 1px) rotate(0deg);
+	}
+	70% {
+		transform: translate(3px, 1px) rotate(-1deg);
+	}
+	80% {
+		transform: translate(-1px, -1px) rotate(1deg);
+	}
+	90% {
+		transform: translate(1px, 2px) rotate(0deg);
+	}
+	100% {
+		transform: translate(1px, -2px) rotate(-1deg);
+	}
+}
+
+@keyframes msellFadeInDown {
+	0% {
+		opacity: 0;
+		transform: translate3d(0, -100%, 0);
+	}
+	100% {
+		opacity: 1;
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+@keyframes msellFlipInX {
+	from {
+		transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+		animation-timing-function: ease-in;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+		opacity: 1;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+	}
+
+	to {
+		transform: perspective(400px);
+	}
+}
+
+@keyframes msellFlipInY {
+	from {
+		transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+		animation-timing-function: ease-in;
+		opacity: 0;
+	}
+
+	40% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+		animation-timing-function: ease-in;
+	}
+
+	60% {
+		transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+		opacity: 1;
+	}
+
+	80% {
+		transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+	}
+
+	to {
+		transform: perspective(400px);
+	}
+}
+
+@keyframes msellShakeUpDown {
+	10%,
+	90% {
+		transform: translate3d(0, -1px, 0);
+	}
+
+	20%,
+	80% {
+		transform: translate3d(0, 2px, 0);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translate3d(0, -4px, 0);
+	}
+
+	40%,
+	60% {
+		transform: translate3d(0, 4px, 0);
+	}
+}
+
+@keyframes msellShakeLeftRight {
+	10%,
+	90% {
+		transform: translate3d(-1px, 0, 0);
+	}
+
+	20%,
+	80% {
+		transform: translate3d(2px, 0, 0);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: translate3d(-4px, 0, 0);
+	}
+
+	40%,
+	60% {
+		transform: translate3d(4px, 0, 0);
+	}
+}
+
+@keyframes msellSwing {
+	5% {
+		transform: rotate3d(0, 0, 1, 15deg);
+	}
+
+	10% {
+		transform: rotate3d(0, 0, 1, -10deg);
+	}
+
+	15% {
+		transform: rotate3d(0, 0, 1, 5deg);
+	}
+
+	20% {
+		transform: rotate3d(0, 0, 1, -5deg);
+	}
+
+	25%,
+	to {
+		transform: rotate3d(0, 0, 1, 0deg);
+	}
+}
+
+@keyframes msellShakeBottom {
+	0%,
+	to {
+		transform: rotate(0deg);
+		transform-origin: 50% 100%;
+	}
+
+	10% {
+		transform: rotate(2deg);
+	}
+
+	20%,
+	40%,
+	60% {
+		transform: rotate(-4deg);
+	}
+
+	30%,
+	50%,
+	70% {
+		transform: rotate(4deg);
+	}
+
+	80% {
+		transform: rotate(-2deg);
+	}
+
+	90% {
+		transform: rotate(2deg);
+	}
+}
+
+@keyframes msellPulse {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.1);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes msellTada {
+	from {
+		transform: scale3d(1, 1, 1);
+	}
+
+	2%,
+	5% {
+		transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+	}
+
+	12%,
+	17%,
+	22%,
+	7% {
+		transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+	}
+
+	10%,
+	15%,
+	20% {
+		transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+	}
+
+	25%,
+	to {
+		transform: scale3d(1, 1, 1);
+	}
+}

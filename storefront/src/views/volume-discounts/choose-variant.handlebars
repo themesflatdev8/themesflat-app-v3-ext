@@ -1,0 +1,22 @@
+<div class="Msell-VD-CV__Header">
+  <h3>{{{settings.contentChooseVariantTitle}}}</h3>
+</div>
+<div class="Msell-VD-CV__Content">
+  <div class="Msell-VD-CV__Media">
+    <img class="Msell-Media" src="{{#if product.image }}{{product.image}}{{else}}data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=={{/if}}" alt="" />
+  </div>
+  <div class="Msell-VD-CV__Info">
+    <a title="{{ product.title }}" href="{{originUrl}}/products/{{product.handle}}" target="_blank">{{ product.title }}</a>
+    <strong class="Msell-VD-CV__Price">{{{ product.price }}}</strong>
+    <div class="Msell-VD-CV__Variants">
+      {{#each product.options}}
+        {{> ./../components/variants/item item=this index=@index widgetID=../widgetID prodID=../product.id }}
+      {{/each}}
+    </div>
+  </div>
+</div>
+<div class="Msell-VD-CV__Footer">
+  <button class="{{classAddToCard}} Msell-Button-ChooseVariant">
+    <span>{{{settings.contentChooseVariantButton}}}</span>
+  </button>
+</div>

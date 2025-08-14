@@ -1,0 +1,22 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+name = "App-Theme"
+client_id = "65ee45351002446f160c0e666c062014"
+application_url = "https://springs-basically-quarter-venice.trycloudflare.com/"
+embedded = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_discounts,read_orders,read_price_rules,read_products,read_themes,write_discounts,write_price_rules"
+
+[auth]
+redirect_urls = [ "https://essence-particular-fisheries-functional.trycloudflare.com/api/auth/callback" ]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false
+
+[build]
+dev_store_url = "ltd-ms-l1.myshopify.com"

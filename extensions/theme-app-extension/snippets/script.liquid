@@ -1,0 +1,63 @@
+<script>
+  window.shopifyMSell = {
+      ...(window.shopifyMSell || {}),
+      pageType: "{{ request.page_type }}",
+      cartType: '{{ settings.cart_type }}',
+      moneyFormatShopify: "{{ shop.money_format | replace: '"', '' }}",
+      moneyWithCurrencyFormatShopify: "{{ shop.money_with_currency_format | replace: '"', '' }}",
+      currencyCodeEnabled: "{{ settings.currency_code_enabled }}",
+      productsInCart: [],
+      collectionIds: [],
+      product: {
+        id: '{{product.id}}',
+        title: `{{ product.title }}`,
+        handle: `{{ product.handle }}`,
+        options: `{{ product.options }}`,
+        variants: [],
+        firstAvailableVariant: {
+          id: "{{ product.selected_or_first_available_variant.id }}",
+          inventory_quantity: "{{ product.selected_or_first_available_variant.inventory_quantity }}"
+        }
+      }, 
+      currency: {
+        code: '{{ cart.currency.iso_code }}',
+        symbol: '{{ cart.currency.symbol }}',
+      },
+      modeBundle: "{{shop.metafields.msAppBlock.bundle_version}}",
+      modeVolume: "{{shop.metafields.msAppBlock.offer_version}}",
+  };
+
+  prodMSell = null;
+  {% for collection in product.collections %}shopifyMSell.collectionIds.push("{{ collection.id }}");{% endfor %}
+  {% for variant in product.variants %}
+    shopifyMSell.product.variants.push({
+      id: "{{ variant.id }}", 
+      title: `{{ variant.title }}`, 
+      price: `{{ variant.price | money_without_currency }}`, 
+      priced: {% if settings.currency_code_enable %} `{{ variant.price | money_with_currency }}` {% else %} `{{ variant.price | money }}` {% endif %},
+      inventory_quantity: "{{ variant.inventory_quantity }}"
+    });
+  {% endfor %}
+  {%- for item in cart.items -%}
+    prodMSell = {
+      id: "{{ item.product.id }}", 
+      title: `{{ item.product.title }}`, 
+      handle: `{{ item.product.handle }}`, 
+      price: `{{ item.product.price | money_without_currency }}`, 
+      priced: {% if settings.currency_code_enable %} `{{ item.product.price | money_with_currency }}` {% else %} `{{ item.product.price | money }}` {% endif %},
+      variants: []
+    }
+    {% for variant in item.product.variants %}
+      prodMSell.variants.push({
+        id: "{{ variant.id }}", 
+        title: `{{ variant.title }}`, 
+        price: "{{ variant.price | money_without_currency }}", 
+        priced: {% if settings.currency_code_enable %} `{{ variant.price | money_with_currency }}` {% else %} `{{ variant.price | money }}` {% endif %},
+        inventory_quantity: "{{ variant.inventory_quantity }}"
+      });
+    {% endfor %}
+    shopifyMSell.productsInCart.push(prodMSell);
+  {% endfor %}
+</script>
+{% comment %} <link rel="stylesheet" href="http://localhost:20001/msell.css" />
+<script src="http://localhost:20001/msell.js" defer></script> {% endcomment %}

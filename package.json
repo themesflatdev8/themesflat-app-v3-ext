@@ -1,0 +1,21 @@
+{
+  "name": "flash-sale-extension",
+  "version": "1.0.0",
+  "main": "web/index.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "cd storefront && npm i && npm run build && cd .. && shopify app deploy -c shopify.app.production.toml",
+    "deploy:dev": "cd storefront && npm i && npm run build:dev && cd .. && shopify app deploy --config shopify.app.dev.toml",
+    "deploy:local": "cd storefront && npm i && npm run build:local && cd .. && shopify app deploy --config shopify.app.toml"
+  },
+  "dependencies": {
+    "@shopify/app": "^3.50.0",
+    "@shopify/cli": "^3.50.0"
+  },
+  "author": "Lamtd"
+}

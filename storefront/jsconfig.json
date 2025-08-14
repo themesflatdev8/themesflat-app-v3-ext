@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6",
+    "baseUrl": "./", // Đường dẫn gốc
+    "paths": {
+      "@/*": ["src/*"] // Định nghĩa alias cho thư mục src
+    }
+  },
+  "exclude": ["node_modules"],
+  "include": ["src/**/*"] // Bao gồm toàn bộ file trong thư mục src
+}

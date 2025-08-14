@@ -1,0 +1,18 @@
+{% render 'script' %}
+{% render 'override' %}
+<script>
+    shopifyMSellAppEmbed = 1;
+</script>
+
+{% comment %} <link rel="stylesheet" href="http://localhost:20001/msell.css" />
+<script src="http://localhost:20001/msell.js" defer></script> {% endcomment %}
+
+{% schema %}
+    {
+        "name": "M-Sell Widgets",
+        "target": "head",
+        "stylesheet": "msell.css",
+        "javascript": "msell.js",
+        "settings":[]
+    }
+{% endschema %}

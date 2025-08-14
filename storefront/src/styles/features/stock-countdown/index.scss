@@ -1,0 +1,61 @@
+$className: ".Msell-Stock-Countdown";
+
+#{$className}{
+  max-width: 100% !important;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--msell-stock-countdown-background-color);
+  border: 1px solid var(--msell-stock-countdown-border-color);
+  border-radius: 8px;
+  margin: 16px auto;
+  &[data-template='default'] {
+    padding: 8px 16px;
+    column-gap: 4px;
+    #{$className}__Icon {
+      svg{
+        width: 20px;
+        height: 20px;
+        margin-bottom: -1px;
+      }
+    }
+  }
+  &[data-template='comfortable'] {
+    padding: 12px 16px;
+    column-gap: 8px;
+    align-items: center;
+    #{$className}__Icon {
+      svg{
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+  &__Icon{
+    flex-shrink: 0;
+    svg{
+      fill: var(--msell-stock-countdown-text-color);
+    }
+  }
+  &__Content{
+    // display: inline-flex;
+    // align-items: center;
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    color: var(--msell-stock-countdown-text-color);
+    padding: 0;
+    margin: 0;
+    strong{
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+      color: var(--msell-stock-countdown-text-color);
+      padding: 0;
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,119 @@
+$className: ".Msell-Sales-Popup";
+
+#{$className}{
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: 3px 4px 16px 0px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  z-index: 999;
+  img{
+    width: 104px;
+    height: auto;
+  }
+  &__Content {
+    position: relative;
+  }
+  &__Info {
+    padding: 12px 8px 12px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 105px;
+    span {
+      font-size: 13px;
+      line-height: normal;
+    }
+    span::before {
+      color: attr(data-color);
+    }
+  }
+  &__Product {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+    margin-right: 18px;
+    &-Name {
+      text-decoration: unset;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 202px;
+      display: -webkit-box;
+      color: #fff;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      font-size: 13px;
+      &:hover {
+        color: #fff;
+        text-decoration: underline;
+      }
+  
+    }
+  }
+  &__Text{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 202px;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  &__Time{
+    font-size: 11px;
+  }
+  &__Close {
+    padding: 4px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 999;
+  }
+  @media screen and (min-width: 768px) {
+    &[showDesktop='false'] {
+      display: none;
+    }
+    &[positionDesktop='bottomLeft'] {
+      left: 32px;
+      bottom: 32px;
+      animation: msellOpenSalePopUpBottom 1s forwards;
+    }
+    &[positionDesktop='bottomRight'] {
+      right: 32px;
+      bottom: 32px;
+      animation: msellOpenSalePopUpBottom 1s forwards;
+    }
+    &[positionDesktop='topLeft'] {
+      top: 80px;
+      left: 32px;
+      animation: msellOpenSalePopUpTop 1s forwards;
+    }
+    &[positionDesktop='topRight'] {
+      top: 80px;
+      right: 32px;
+      animation: msellOpenSalePopUpTop 1s forwards;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    margin: auto;
+    width: 340px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    &[showMobile='false'] {
+      display: none;
+    }
+    &[positionMobile='top'] {
+      top: 60px;
+      bottom: unset;
+      animation: msellOpenSalePopUpTop 1s forwards;
+    }
+    &[positionMobile='bottom'] {
+      bottom: 40px;
+      animation: msellOpenSalePopUpBottom 1s forwards;
+    }
+  }
+}

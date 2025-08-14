@@ -1,0 +1,11 @@
+<div class="Msell-Variant__Item" data-count="{{item.values.length}}">
+  <span class="">{{ item.name }}</span> 
+  <fieldset>
+    {{#each item.values}}
+      <input type="radio" class="Msell-Variant__Option" id="Msell-w{{../widgetID}}-p{{../prodID}}-option-{{../index}}-{{@index}}" name="Msell-w{{../widgetID}}-p{{../prodID}}-option-name-{{../item.name}}" value="{{this}}" {{#ifCond @index "==" "0"}} checked="" {{/ifCond}}>
+      <label for="Msell-w{{../widgetID}}-p{{../prodID}}-option-{{../index}}-{{@index}}">
+        {{ this }}
+      </label>
+    {{/each}}
+  </fieldset>
+</div>

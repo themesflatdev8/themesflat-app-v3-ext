@@ -1,0 +1,78 @@
+<div class="Msell-BAmazon__Wrap">
+  <div class="Msell-BAmazon__Header">
+    <div class="Msell-BAmazon__HeaderTitle">
+      <h2 class="Msell-BAmazon__Title">{{settings.title}}</h2>
+      {{#if settings.subTitle}}
+        <p>{{settings.subTitle}}</p>
+      {{/if}}
+    </div>
+  </div>
+  <div class="Msell-BAmazon__Content">
+    <div class="Msell-BAmazon__Body">
+      <msell-swiper>
+        <div class="Msell-BAmazon__Thumbnails Msell-Swiper__List">
+          {{#each list}}
+            <div class="Msell-BAmazon__Thumbnail Msell-Swiper__Item" id="Msell-bundle-{{../widgetID}}-p{{this.id}}-thumbnail">
+              <div class="Msell-BAmazon__ThumbnailWrap">
+                <img class="Msell-Media" src="{{#if this.image }}{{this.image}}{{else}}data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=={{/if}}" alt="" />
+              </div>
+              <div class='Msell-Swiper__Separator Msell-BAmazon__Thumbnail-Separator'>+</div>
+            </div>
+          {{/each}}
+        </div>
+        <div class="Msell-BAmazon__Buttons Msell-Swiper-Buttons">
+          <button type="button" class="Msell-BAmazon-Button" name="previous" aria-label="Slide previous">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z">
+            </path></svg>
+          </button>
+          <div class="Msell-BAmazon__Counter">
+            <span class="Msell-Swiper-Counter--Current"></span>
+            <span aria-hidden="true"> / </span>
+            <span class="Msell-Swiper-Counter--Total"></span>
+          </div>
+          <button type="button" class="Msell-BAmazon-Button" name="next" aria-label="Slide next">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 10 6">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M9.354.646a.5.5 0 00-.708 0L5 4.293 1.354.646a.5.5 0 00-.708.708l4 4a.5.5 0 00.708 0l4-4a.5.5 0 000-.708z">
+            </path></svg>
+          </button>
+        </div>
+      </msell-swiper>
+      <div class="Msell-BAmazon__List"></div>
+    </div>
+    <div class="Msell-BAmazon__Box">
+      {{#if timer.active}}
+        <div class="Msell-BAmazon__BoxFirst">
+          <msell-countdown-timer></msell-countdown-timer>
+        </div>
+      {{/if}}
+      <div class="Msell-BAmazon__BoxSecond">
+        <div class="Msell-BAmazon__Info">
+          <div class="Msell-BAmazon__Total">
+            {{#if settings.contentTotal}}
+              <span class="Msell-Bundle__TotalLabel Msell-BAmazon__TotalLabel">{{{settings.contentTotal}}}</span>
+            {{/if}}
+            <div class="Msell-BAmazon__SubTotal">
+              <span class="Msell-Bundle__Badge Msell-Bundle__Discount">{{{discount}}}</span>
+              <div class="Msell-BAmazon__TotalSale">
+                <span class="Msell-Bundle__TotalDefault Msell-BAmazon__TotalDefault"></span>
+                <span class="Msell-Bundle__TotalRegular Msell-BAmazon__TotalRegular"></span>
+              </div>
+            </div>
+          </div>
+          {{#if promotionalContent}}
+            <div class="Msell-Bundle__Promotion">{{{promotionalContent}}}</div>
+          {{/if}}
+        </div>
+        <button class="{{classAddToCard}} Msell-Button-AddToCart">
+          <span>{{settings.contentAddToCartButton}}</span>
+          <div class="Msell-Spinner">
+            <svg aria-hidden="true" focusable="false" class="Msell-Spinner-Svg" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+              <circle class="Msell-Spinner-Path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+            </svg>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
