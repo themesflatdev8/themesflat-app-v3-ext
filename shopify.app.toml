@@ -1,16 +1,18 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-name = "App manage theme"
+name = "Themes-flat"
 client_id = "65ee45351002446f160c0e666c062014"
-application_url = "https://wish-uni-adopt-united.trycloudflare.com"
+application_url = "https://destroyed-transaction-workers-disposition.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "read_discounts,read_orders,read_price_rules,read_products,read_themes,write_discounts,write_price_rules"
+scopes = "write_third_party_fulfillment_orders,read_third_party_fulfillment_orders,write_merchant_managed_fulfillment_orders,read_merchant_managed_fulfillment_orders,read_discounts,write_discounts,read_draft_orders,write_draft_orders,read_order_edits,write_order_edits,write_orders,read_orders,read_price_rules,read_products,read_themes,write_price_rules,read_content,write_content"
 
 [auth]
-redirect_urls = [ "https://owner-duncan-inclusive-another.trycloudflare.com/api/auth/callback" ]
+redirect_urls = [
+  "https://schedule-cab-breeds-licenses.trycloudflare.com/api/exchange-token/callback"
+]
 
 [webhooks]
 api_version = "2025-10"
@@ -20,7 +22,3 @@ embedded = false
 
 [build]
 dev_store_url = "anv-theme.myshopify.com"
-include_config_on_deploy = true
-
-BUILD to shopify
-shopify app deploy

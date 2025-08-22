@@ -8,6 +8,22 @@
 1. Use Shopify CLI 3.0
 1. Use Ruby 3.0.*
 
+
+Cài npm vào dự án
+```shell
+npm install
+```
+Run project
+```shell
+shopify app deploy
+```
+
+
+
+
+
+
+
 ### CLI 
 https://shopify.dev/docs/apps/tools/cli/commands#deploy
 
@@ -21,10 +37,11 @@ View info:
 npm run shopify app info
 ```
 
-Pull env by app of partner:
-```shell
-npm run shopify app env pull
-```
+
+
+
+
+
 
 ### Local Development
 
@@ -61,3 +78,4 @@ Build theme app extension:
 npm run shopify app env pull
 npm run deploy
 ```
+
