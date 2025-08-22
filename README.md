@@ -13,16 +13,22 @@ Cài npm vào dự án
 ```shell
 npm install
 ```
+
+## Update file shopify.app.toml
+Đổi thành URL backend đã tạo
+application_url = "https://destroyed-transaction-workers-disposition.trycloudflare.com"
+
+Thay bằng url Frontend đã tạo. Chú ý vẫn giữ lại api/exchange-token/callback
+redirect_urls = [
+  "https://schedule-cab-breeds-licenses.trycloudflare.com/api/exchange-token/callback"
+]
+
+
 Run project
 ```shell
 shopify app deploy
 ```
-
-
-
-
-
-
+## Lên shopify app kiểm tra lại url đã nhận chưa nếu có lỗi
 
 ### CLI 
 https://shopify.dev/docs/apps/tools/cli/commands#deploy
