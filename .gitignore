@@ -3,7 +3,6 @@
 /.env.*
 
 # Asset theme app extension
-extensions/theme-app-extension/assets/**
 
 # Dependency directory
 node_modules
