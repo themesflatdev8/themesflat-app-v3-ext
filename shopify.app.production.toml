@@ -6,7 +6,7 @@ application_url = "https://spy.msell.app/"
 embedded = true
 
 [webhooks]
-api_version = "2025-01"
+api_version = "2025-07"
 
   [[webhooks.subscriptions]]
   uri = "https://spy-api.msell.app/api/webhook/customers/data_request"

@@ -2,7 +2,7 @@
 
 name = "Themes-flat"
 client_id = "65ee45351002446f160c0e666c062014"
-application_url = "https://destroyed-transaction-workers-disposition.trycloudflare.com"
+application_url = "https://visitor-filter-sig-hunt.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,11 +11,11 @@ scopes = "write_third_party_fulfillment_orders,read_third_party_fulfillment_orde
 
 [auth]
 redirect_urls = [
-  "https://schedule-cab-breeds-licenses.trycloudflare.com/api/exchange-token/callback"
+  "https://visitor-filter-sig-hunt.trycloudflare.com/api/exchange-token/callback"
 ]
 
 [webhooks]
-api_version = "2025-10"
+api_version = "2025-07"
 
 [pos]
 embedded = false
