@@ -1,0 +1,191 @@
+.c-productReview .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+    background-color: #ffc107;
+}
+
+.c-productReview .more .tf-btnc-btnCancelReview {
+    display: none;
+}
+
+.c-productReview .more .tf-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: max-content;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    background-color: var(--White);
+    border: 1px solid var(--Onsurface);
+    color: #000;
+}
+
+.c-productReview .more .tf-btn:hover {
+    color: #fff;
+    background-color: var(--Primary);
+}
+
+.rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: left;
+    gap: 10px;
+    position: relative;
+}
+
+.rating-stars:not(:checked) > input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+    width: 0;
+}
+
+.rating-stars:not(:checked) > label {
+    font-size: 40px;
+    cursor: pointer;
+    white-space: nowrap;
+    width: 40px;
+    color: var(--line);
+}
+
+.rating-stars:not(:checked) > label:before {
+    font-family: "icomoon";
+    content: "\e908";
+}
+
+.rating-stars:not(:checked) > label:hover, 
+.rating-stars:not(:checked) > label:hover ~ label {
+    color: var(--Yellow);
+}
+
+.rating-stars > input:checked ~ label {
+    color: var(--Yellow);
+}
+
+.count-number {
+    margin-bottom: 24px;
+}
+
+.review-form .heading {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+.review-form .form-group {
+    margin-bottom: 20px;
+}
+
+.review-form .form-group label {
+    margin-bottom: 8px;
+}
+
+
+.review-form .form-row {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.review-form .submit-review {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 40px;
+    border-radius: 4px;
+    font-size: 16px;
+    width: max-content;
+    line-height: 26px;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: pointer;
+    background-color: var(--Onsurface);
+    color: var(--White);
+}
+
+.review-form .submit-review:hover {
+    background-color: var(--Primary);
+}
+
+.review-item:not(:last-child) {
+  margin-bottom: 24px;
+}
+
+
+.review-item .infor {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 12px;
+}
+
+.reply-cmt {
+  margin-left: 60px;
+  border-left: 4px solid var(--line);
+  padding-left: 16px;
+}
+
+.review-item .review-text {
+  font-size: 16px;
+  line-height: 26px;
+  color: #6c757d;
+}
+
+.review-item .reply-button {
+  margin-top: 8px;
+}
+
+.review-item .review-author {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.review-item .review-author span {
+    color: #ffc107;
+}
+
+.review-item .content {
+  flex-grow: 1;
+}
+
+.review-item .avatar {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.review-item .reply-form {
+  display: grid;
+  gap: 15px;
+  justify-items: flex-start;
+}
+
+.review-item .reply-form .submit-reply {
+  padding: 6px 16px;
+}
+
+
+@media (max-width: 767px) {
+  .review-item {
+    gap: 15px;
+  }
+
+  .reply-cmt {
+    padding-left: 70px;
+  }
+
+}
