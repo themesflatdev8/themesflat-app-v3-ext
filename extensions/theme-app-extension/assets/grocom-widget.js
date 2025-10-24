@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const shop = Shopify.shop;
 
   try {
-    const res = await fetch(`https://pierre-main-languages-chocolate.trycloudflare.com/api/review-box?product_id=${productId}&shop=${shop}`);
+    const res = await fetch(`https://be-gearo.vinetawp.com/api/review-box?product_id=${productId}&shop=${shop}`);
     const data = await res.json();
     el.innerHTML = data.html;
   } catch (e) {
