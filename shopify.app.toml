@@ -1,8 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
-
-name = "Themes-flat"
-client_id = "65ee45351002446f160c0e666c062014"
-application_url = "https://opposite-fewer-novelty-recovery.trycloudflare.com"
+name = "Grocom"
+client_id = "192fed02beba7002e96ee77ff95cdb1e"
+application_url = "https://fe-gearo.vinetawp.com"
 embedded = true
 
 [access_scopes]
@@ -11,7 +10,7 @@ scopes = "write_third_party_fulfillment_orders,read_third_party_fulfillment_orde
 
 [auth]
 redirect_urls = [
-  "https://nec-demonstrate-indicated-spring.trycloudflare.com/api/exchange-token/callback"
+  "https://be-gearo.vinetawp.com/api/exchange-token/callback"
 ]
 
 [webhooks]
@@ -20,8 +19,11 @@ api_version = "2025-07"
 [[webhooks.subscriptions]]
 compliance_topics = ["customers/data_request", "customers/redact", "shop/redact"]
 uri = "https://be-gearo.vinetawp.com/api/webhook/customers/data_request"
+
+
 [pos]
 embedded = false
 
 [build]
-dev_store_url = "anv-theme.myshopify.com"
+dev_store_url = "demo-gearo.myshopify.com"
+

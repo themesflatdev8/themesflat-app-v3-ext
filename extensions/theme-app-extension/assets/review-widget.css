@@ -1,3 +1,208 @@
+:root {
+    --main: #000000;
+    --White: #ffffff;
+    --Onsurface: #181818;
+    --Primary: #827460;
+    --Secondary: #4D4E4F;
+    --Secondary2: #A0A0A0;
+    --Surface: #F6F6F6;
+    --line: #E9E9E9;
+    --Critical: #F03E3E;
+    --Success: #3DAB25;
+    --Yellow: #F0A750;
+    --pink: #EC749D;
+    --backdrop: rgba(24, 24, 24, .2);
+}
+
+:root {
+    --font-body-family: Marcellus;
+    --font-style-2: Kumbh Sans;
+    --font-heading-family: Marcellus;
+    --font-btn-family: Marcellus;
+    --font-body-size: 1;
+    --font-heading-size: 1;
+    --container-width: 132rem;
+    --container-fluid-offset: 6rem;
+    --transition: all 0.3s ease 0s;
+    --duration-long: 500ms;
+    --color-foreground: #000000;
+    --color-background: #ffffff;
+    --color-heading: #181818;
+    --line: #e9e9e9;
+    --primary: #827460;
+    --primary-hover: #827460;
+    --background-btn: #181818;
+    --color-btn: #ffffff;
+    --color-border-btn: #181818;
+    --btn-hover-background: #827460;
+    --btn-hover-text: #ffffff;
+    --btn-hover-border: #827460;
+    --input-background: #ffffff;
+    --input-text-color: #4d4e4f;
+    --input-border-color: #e9e9e9;
+}
+
+.c-productReview textarea,
+.c-productReview input[type=text],
+.c-productReview input[type=password],
+.c-productReview input[type=datetime],
+.c-productReview input[type=datetime-local],
+.c-productReview input[type=date],
+.c-productReview input[type=month],
+.c-productReview input[type=time],
+.c-productReview input[type=week],
+.c-productReview input[type=number],
+.c-productReview input[type=email],
+.c-productReview input[type=url],
+.c-productReview input[type=search],
+.c-productReview input[type=tel],
+.c-productReview input[type=color] {
+  font-family: "Marcellus", sans-serif;
+  border: 2px solid var(--input-border-color);
+  outline: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  font-size: 16px;
+  line-height: 26px;
+  padding: 9px 16px;
+  width: 100%;
+  background: var(--input-background);
+  color: var(--input-text-color);
+  font-weight: 400;
+  border-radius: 8px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.c-productReview textarea:focus,
+.c-productReview input[type=text]:focus,
+.c-productReview input[type=password]:focus,
+.c-productReview input[type=datetime]:focus,
+.c-productReview input[type=datetime-local]:focus,
+.c-productReview input[type=date]:focus,
+.c-productReview input[type=month]:focus,
+.c-productReview input[type=time]:focus,
+.c-productReview input[type=week]:focus,
+.c-productReview input[type=number]:focus,
+.c-productReview input[type=email]:focus,
+.c-productReview input[type=url]:focus,
+.c-productReview input[type=search]:focus,
+.c-productReview input[type=tel]:focus,
+.c-productReview input[type=color]:focus {
+  border-color: var(--input-border-color);
+}
+
+.c-productReview textarea::placeholder,
+.c-productReview input[type=text]::placeholder,
+.c-productReview input[type=password]::placeholder,
+.c-productReview input[type=datetime]::placeholder,
+.c-productReview input[type=datetime-local]::placeholder,
+.c-productReview input[type=date]::placeholder,
+.c-productReview input[type=month]::placeholder,
+.c-productReview input[type=time]::placeholder,
+.c-productReview input[type=week]::placeholder,
+.c-productReview input[type=number]::placeholder,
+.c-productReview input[type=email]::placeholder,
+.c-productReview input[type=url]::placeholder,
+.c-productReview input[type=search]::placeholder,
+.c-productReview input[type=tel]::placeholder,
+.c-productReview input[type=color]::placeholder {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.c-productReview textarea {
+  height: 112px;
+  resize: none;
+}
+
+
+/* Placeholder color */
+.c-productReview ::-webkit-input-placeholder {
+  color: var(--input-text-color);
+}
+
+.c-productReview :-moz-placeholder {
+  color: var(--input-text-color);
+}
+
+.c-productReview ::-moz-placeholder {
+  color: var(--input-text-color);
+  opacity: 1;
+}
+
+.c-productReview button {
+  font-family: var(--font-btn-family);
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+/* Since FF19 lowers the opacity of the placeholder by default */
+.c-productReview :-ms-input-placeholder {
+  color: var(--input-text-color);
+}
+
+/* Typography
+-------------------------------------------------------------- */
+
+
+.c-productReview h1,
+.c-productReview .h1 {
+  font-size: 56px;
+  line-height: 1.214;
+}
+
+.c-productReview h2,
+.c-productReview .h2 {
+  font-size: 44px;
+  line-height: 1.136;
+}
+
+.c-productReview h3,
+.c-productReview .h3 {
+  font-size: 40px;
+  line-height: 1.2;
+}
+
+.c-productReview h4,
+.c-productReview .h4 {
+  font-size: 30px;
+  line-height: 1.4;
+}
+
+.c-productReview h5,
+.c-productReview .h5 {
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.c-productReview h6,
+.c-productReview .h6 {
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.c-productReview h1,
+.c-productReview h2,
+.c-productReview h3,
+.c-productReview h4,
+.c-productReview h5,
+.c-productReview h6 {
+  font-family: var(--font-heading-family);
+  text-rendering: optimizeLegibility;
+  color: var(--color-heading);
+  font-weight: 400;
+}
+
+
 .c-productReview .head {
     display: flex;
     align-items: center;
@@ -5,7 +210,6 @@
     flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 40px;
-    background-color: #ffc107;
 }
 
 .c-productReview .more .tf-btnc-btnCancelReview {
@@ -189,3 +393,147 @@
   }
 
 }
+
+.c-productReviews .star_wrap {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.c-productReviews .star-rating {
+  display: inline-block;
+  font-size: 0;
+}
+
+.c-productReviews .stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome, sans-serif;
+  color: #ccc;
+  line-height: 1;
+}
+
+.c-productReviews .stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #ffc107;
+}
+
+.c-productReviews .stars-outer::before,
+.c-productReviews .stars-inner::before {
+  content: "★★★★★";
+  font-size: 20px;
+}
+
+.c-productReview .c-productReviews .lstSum,
+.c-productReview .rate-wrap {
+  flex-grow: 1;
+}
+
+.c-productReview .c-productReviews {
+    display: flex;
+    align-items: center;
+    gap: 100px;
+    margin-bottom: 40px;
+    max-width: 597px;
+}
+
+.c-productReview .c-productReviews .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #000;
+}
+
+.c-productReviews .lstSum {
+  display: none;
+}
+
+.c-productReview .c-productReviews .lstSum {
+  display: block;
+}
+
+.lstSum .item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.lstSum .number-1 {
+    width: 12px;
+    text-align: end;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.lstSum .icon {
+    font-size: 16px;
+    margin-left: 1px;
+}
+
+.lstSum .line-bg {
+    margin: 0 8px;
+    width: 100%;
+    height: 8px;
+    background-color: var(--line);
+}
+
+.lstSum .number-2 {
+    width: 17px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.lstSum .line-bg div {
+    height: 100%;
+    background-color: var(--Onsurface);
+}
+
+.number-review {
+    font-size: 80px;
+    font-weight: 400;
+    line-height: 88px;
+}
+@media (max-width: 1199px) {
+    .number-review {
+        font-size: 50px;
+        line-height: 60px;
+    }
+}
+
+@media (max-width:991px) {
+  .c-productReview .c-productReviews {
+    gap: 10px;
+  }
+  .number-review {
+        font-size: 55px;
+        line-height: 63px;
+    }
+}
+
+@media (max-width: 767px) {
+    .number-review {
+        font-size: 34px;
+        line-height: 44px;
+    }
+}
+
+@media (max-width:600px) {
+  .c-productReview .head,
+  .c-productReview .c-productReviews {
+    flex-direction: column;
+  }
+
+  .c-productReview .c-productReviews .lstSum, .c-productReview .rate-wrap {
+    width: 100%;
+  }
+}
+
+
