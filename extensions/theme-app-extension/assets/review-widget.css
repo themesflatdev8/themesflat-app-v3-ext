@@ -245,6 +245,17 @@
     position: relative;
 }
 
+.rating-stars label {
+  position: relative;
+}
+
+.rating-stars label svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
 .rating-stars:not(:checked) > input {
     position: absolute;
     opacity: 0;
@@ -257,13 +268,10 @@
     cursor: pointer;
     white-space: nowrap;
     width: 40px;
+    height: 40px;
     color: var(--line);
 }
 
-.rating-stars:not(:checked) > label:before {
-    font-family: "icomoon";
-    content: "\e908";
-}
 
 .rating-stars:not(:checked) > label:hover, 
 .rating-stars:not(:checked) > label:hover ~ label {
