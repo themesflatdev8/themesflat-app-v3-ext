@@ -390,6 +390,14 @@
   padding: 6px 16px;
 }
 
+.text-notification {
+  margin-top: 15px;
+  color: red;
+}
+
+.text-notification.success {
+  color: green;
+}
 
 @media (max-width: 767px) {
   .review-item {
