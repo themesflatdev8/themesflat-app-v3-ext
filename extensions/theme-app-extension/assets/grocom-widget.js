@@ -50,15 +50,13 @@
     }
   });
   
- $(document).ready(function () {
-  $('#review-section #review-form').on('submit', function (e) {
-    e.preventDefault();
+ $(document).ready(function () {  
     const el = document.getElementById('review-section');
     if (!el) return;
-
     const productId = el.dataset.productId;
     const linkApp = 'https://be-gearo.vinetawp.com/api'; // your API base
-
+  $('#review-section #review-form').on('submit', function (e) {
+    e.preventDefault();
     let handle = null;
     let title = null;
 
