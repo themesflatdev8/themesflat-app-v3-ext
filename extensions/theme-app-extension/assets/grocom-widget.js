@@ -198,8 +198,10 @@
 
       if (data.status === 'success') {
         if (!data.reviews.length) {
+          console.log('No comments found');
           container.innerHTML = '<div class="no-comment">No comments</div>';
         } else {
+          console.log('Comments found');
           data.reviews.forEach((review) => {
             container.insertAdjacentHTML('beforeend', renderReviewRecursive(review));
           });
@@ -293,7 +295,7 @@
   }
 
   // Initial load
-  getListReviews();
-  getCountReview();
+  // getListReviews();
+  // getCountReview();
   
 });
