@@ -153,6 +153,9 @@
 /* Typography
 -------------------------------------------------------------- */
 
+#review-section {
+  margin:  40px 0;
+}
 
 .c-productReview h1,
 .c-productReview .h1 {
@@ -200,6 +203,7 @@
   text-rendering: optimizeLegibility;
   color: var(--color-heading);
   font-weight: 400;
+  margin-bottom: 0;
 }
 
 
@@ -284,6 +288,10 @@
 
 .count-number {
     margin-bottom: 24px;
+}
+
+.c-productReview .form {
+  display: none;
 }
 
 .review-form .heading {
