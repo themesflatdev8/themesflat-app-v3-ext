@@ -58,8 +58,7 @@
     console.error('Error loading reviews:', error);
   }
 });
-
-  
+(function($) {
  $(document).ready(function () {  
     const el = document.getElementById('review-section');
     if (!el) return;
@@ -302,7 +301,8 @@
   $('.c-productReview .form').hide();
   $('.c-productReview .c-btnCancelReview').hide();
 
-  $('.c-productReview .c-btnReview').click(function() {        
+  $('.c-productReview .c-btnReview').click(function() {  
+    console.log('show form');      
     $('.c-productReview .list').hide();
     $('.c-productReview .form').show();
 
@@ -311,10 +311,13 @@
   });
 
   $('.c-productReview .c-btnCancelReview').click(function() {
+    console.log('show list');
     $('.c-productReview .list').show();
     $('.c-productReview .form').hide();
 
     $('.c-productReview .c-btnReview').show();
     $('.c-productReview .c-btnCancelReview').hide();
   });
-});
+  });
+
+})(jQuery);
