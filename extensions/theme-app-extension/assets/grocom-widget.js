@@ -1,5 +1,5 @@
  document.addEventListener('DOMContentLoaded', async () => {
-  const el = document.getElementById('grocom-review');
+  const el = document.getElementById('review-section');
   if (!el) return;
 
   const productId = el.dataset.productId;
