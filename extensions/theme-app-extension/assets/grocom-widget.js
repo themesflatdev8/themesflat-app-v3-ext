@@ -1,17 +1,16 @@
  document.addEventListener('DOMContentLoaded', async () => {
-    const el = document.getElementById('review-section');
-    if (!el) return;
+  const el = document.getElementById('review-section');
+  if (!el) return;
 
-    const productId = el.dataset.productId;
-    const shop = Shopify.shop;
-    const linkApp = 'https://be-gearo.vinetawp.com/api';
+  const productId = el.dataset.productId;
+  const shop = Shopify.shop;
+  const linkApp = 'https://be-gearo.vinetawp.com/api';
 
-    try {
-      const res = await fetch(`${linkApp}/review-box?product_id=${productId}&shop=${shop}`);
-      const data = await res.json();
-      el.innerHTML = data.html;
-    
-      //     // ------------------------------
+  try {
+    const res = await fetch(`${linkApp}/review-box?product_id=${productId}&shop=${shop}`);
+    const data = await res.json();
+    el.innerHTML = data.html;
+
     let handle = null;
     let title = null;
 
@@ -26,14 +25,24 @@
       if (index !== -1 && parts[index + 1]) handle = parts[index + 1];
     }
 
+    // Wait a bit for title to render (in case of slow theme)
+    await new Promise(resolve => setTimeout(resolve, 300));
+
     // Get title
     if (window.ShopifyAnalytics?.meta?.product?.title) {
       title = window.ShopifyAnalytics.meta.product.title;
     } else if (window.meta?.product?.title) {
       title = window.meta.product.title;
     } else {
-      const elTitle = document.querySelector('h1.product__title, .product-title, [data-product-title]');
-      if (elTitle) title = elTitle.textContent.trim();
+      const elTitle = document.querySelector(
+        'h1.product__title, .product-title, h1.product__name, h1.title, [data-product-title]'
+      );
+      if (elTitle) {
+        title = elTitle.textContent.trim();
+        console.log('Detected title:', title);
+      } else {
+        console.warn('Title element not found in DOM');
+      }
     }
 
     // Assign values to form inputs
@@ -43,12 +52,13 @@
 
     const inputTitle = el.querySelector('input[name="product_title"]');
     if (inputTitle && title) inputTitle.value = title;
-    else console.warn('Input[name="product_title"] not found or title not detected');
+    else console.warn('Input[name="product_title"] not found or title not detected', title);
 
-    } catch (error) {
-      console.error('Error loading reviews:', error);
-    }
-  });
+  } catch (error) {
+    console.error('Error loading reviews:', error);
+  }
+});
+
   
  $(document).ready(function () {
   $('#review-section #review-form').on('submit', function (e) {
