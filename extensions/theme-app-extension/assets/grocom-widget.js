@@ -60,84 +60,110 @@
 });
 
   
- $(document).ready(function () {
-  $('#review-section #review-form').on('submit', function (e) {
-    e.preventDefault();
+ $(document).ready(function () {  
     const el = document.getElementById('review-section');
     if (!el) return;
-
     const productId = el.dataset.productId;
     const linkApp = 'https://be-gearo.vinetawp.com/api'; // your API base
-
+  $('#review-section #review-form').on('submit', async function (e) {
+    e.preventDefault();
     let handle = null;
     let title = null;
 
-    if (window.ShopifyAnalytics?.meta?.product?.handle) {
-      handle = window.ShopifyAnalytics.meta.product.handle;
-    } else if (window.meta?.product?.handle) {
-      handle = window.meta.product.handle;
-    } else {
-      const parts = window.location.pathname.split('/');
-      const index = parts.indexOf('products');
-      if (index !== -1 && parts[index + 1]) handle = parts[index + 1];
-    }
+     try {
+      const res = await fetch(`${linkApp}/review-box?product_id=${productId}&shop=${shop}`);
+      const data_res = await res.json();
+      el.innerHTML = data_res.html;
 
-    if (window.ShopifyAnalytics?.meta?.product?.title) {
-      title = window.ShopifyAnalytics.meta.product.title;
-    } else if (window.meta?.product?.title) {
-      title = window.meta.product.title;
-    } else {
-      const elTitle = document.querySelector('h1.product__title, .product-title, [data-product-title]');
-      if (elTitle) title = elTitle.textContent.trim();
-    }
+      let handle = null;
+      let title = null;
 
-    const inputHandle = el.querySelector('input[name="handle"]');
-    if (inputHandle && handle) inputHandle.value = handle;
-
-    const inputTitle = el.querySelector('input[name="product_title"]');
-    if (inputTitle && title) inputTitle.value = title;
-
-    const domain = Shopify.shop;
-    const apiUrl = `${linkApp}/submit-review`;
-
-    const data = {
-      domain: domain,
-      product_id: productId,
-      title: title,
-      handle: handle,          
-      rating: $('#review-section #review-form input[name="rating"]:checked').val(),
-      review_title: $('#review-section #review-form #review_title').val(),
-      review_text: $('#review-section #review-form #review_text').val(),
-      user_name: $('#review-section #review-form #user_name').val(),
-      user_email: $('#review-section #review-form #user_email').val()
-    };
-
-    if (!data.rating || !data.review_text || !data.user_email) {
-      $('.text-notification').html('Please fill in rating,review test and email fields before submitting your review.');
-      return;
-    }
-
-    $.ajax({
-      type: 'POST',
-      url: apiUrl,
-      data: data,
-      success: function (response) {
-        if (response.status === 'success') {
-          $('.text-notification').addClass('success').html('Thank you! Your review has been submitted successfully.');
-
-          $('#review-form')[0].reset();
-
-          reloadReviewSummary(); 
-        } else {
-          alert('Error: ' + (response.message || 'Unknown error occurred.'));
-        }
-      },
-      error: function (xhr, status, error) {
-        console.error('Review submission failed:', error);
-        // $('.text-notification').html('An error occurred while submitting your review. Please try again later.');            
-        $('.text-notification').html('message');            
+      // Get handle
+      if (window.ShopifyAnalytics?.meta?.product?.handle) {
+        handle = window.ShopifyAnalytics.meta.product.handle;
+      } else if (window.meta?.product?.handle) {
+        handle = window.meta.product.handle;
+      } else {
+        const parts = window.location.pathname.split('/');
+        const index = parts.indexOf('products');
+        if (index !== -1 && parts[index + 1]) handle = parts[index + 1];
       }
-    });
+
+      // Wait a bit for title to render (in case of slow theme)
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Get title
+      if (window.ShopifyAnalytics?.meta?.product?.title) {
+        title = window.ShopifyAnalytics.meta.product.title;
+      } else if (window.meta?.product?.title) {
+        title = window.meta.product.title;
+      } else {
+        const elTitle = document.querySelector(
+          'h1.product__title, .product-title, h1.product__name, h1.title, [data-product-title]'
+        );
+        if (elTitle) {
+          title = elTitle.textContent.trim();
+          console.log('Detected title:', title);
+        } else {
+          console.warn('Title element not found in DOM');
+        }
+      }
+
+      // Assign values to form inputs
+      const inputHandle = el.querySelector('input[name="handle"]');
+      if (inputHandle && handle) inputHandle.value = handle;
+      else console.warn('Input[name="handle"] not found or handle not detected');
+
+      const inputTitle = el.querySelector('input[name="product_title"]');
+      if (inputTitle && title) inputTitle.value = title;
+      else console.warn('Input[name="product_title"] not found or title not detected', title);
+
+    
+      const domain = Shopify.shop;
+      const apiUrl = `${linkApp}/submit-review`;
+
+      const data = {
+        domain: domain,
+        product_id: productId,
+        title: title,
+        handle: handle,          
+        rating: $('#review-section #review-form input[name="rating"]:checked').val(),
+        review_title: $('#review-section #review-form #review_title').val(),
+        review_text: $('#review-section #review-form #review_text').val(),
+        user_name: $('#review-section #review-form #user_name').val(),
+        user_email: $('#review-section #review-form #user_email').val()
+      };
+
+      if (!data.rating || !data.review_text || !data.user_email) {
+        $('.text-notification').html('Please fill in rating,review test and email fields before submitting your review.');
+        return;
+      }
+
+      $.ajax({
+        type: 'POST',
+        url: apiUrl,
+        data: data,
+        success: function (response) {
+          if (response.status === 'success') {
+            $('.text-notification').addClass('success').html('Thank you! Your review has been submitted successfully.');
+
+            $('#review-form')[0].reset();
+
+            reloadReviewSummary(); 
+          } else {
+            alert('Error: ' + (response.message || 'Unknown error occurred.'));
+          }
+        },
+        error: function (xhr, status, error) {
+          console.error('Review submission failed:', error);
+          // $('.text-notification').html('An error occurred while submitting your review. Please try again later.');            
+          $('.text-notification').html('message');            
+        }
+      });
+    } catch (error) {
+      console.error('Error loading reviews:', error);
+    }
+
   });
 
   function reloadReviewSummary() {
