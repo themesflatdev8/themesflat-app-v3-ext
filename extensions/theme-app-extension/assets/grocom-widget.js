@@ -1,7 +1,7 @@
  document.addEventListener('DOMContentLoaded', async () => {
   const el = document.getElementById('review-section');
   if (!el) return;
-
+  console.log('Grocom Review Widget initialized');
   const productId = el.dataset.productId;
   const shop = Shopify.shop;
   const linkApp = 'https://be-gearo.vinetawp.com/api';
