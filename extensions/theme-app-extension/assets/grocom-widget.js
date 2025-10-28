@@ -70,9 +70,6 @@
     let title = null;
 
     try {
-      const res = await fetch(`${linkApp}/review-box?product_id=${productId}&shop=${shop}`);
-      const dataRes = await res.json();
-      el.innerHTML = dataRes.html;
 
       // Lấy handle sản phẩm
       if (window.ShopifyAnalytics?.meta?.product?.handle) {
@@ -94,20 +91,8 @@
       );
       if (elTitle) {
         title = elTitle.textContent.trim();
-        console.log('✅ Detected title:', title);
-      } else {
-        console.warn('⚠️ Title element not found in DOM');
-      }
-
-      // Gán giá trị vào input hidden
-      const inputHandle = el.querySelector('input[name="handle"]');
-      if (inputHandle && handle) inputHandle.value = handle;
-      else console.warn('⚠️ Input[name="handle"] not found or handle missing');
-
-      const inputTitle = el.querySelector('input[name="product_title"]');
-      if (inputTitle && title) inputTitle.value = title;
-      else console.warn('⚠️ Input[name="product_title"] not found or title missing', title);
-
+      } 
+    
       // Thu thập dữ liệu review
       const rating = el.querySelector('input[name="rating"]:checked')?.value;
       const review_title = el.querySelector('#review_title')?.value.trim();
@@ -290,7 +275,6 @@
     btnCancel.style.display = 'none';
 
     btnReview.addEventListener('click', () => {
-      console.log('show form');
       listContainer.style.display = 'none';
       formContainer.style.display = 'block';
       btnReview.style.display = 'none';
@@ -298,7 +282,6 @@
     });
 
     btnCancel.addEventListener('click', () => {
-      console.log('show list');
       listContainer.style.display = 'block';
       formContainer.style.display = 'none';
       btnReview.style.display = 'inline-block';
@@ -309,4 +292,5 @@
   // Initial load
   getListReviews();
   getCountReview();
+  
 });
