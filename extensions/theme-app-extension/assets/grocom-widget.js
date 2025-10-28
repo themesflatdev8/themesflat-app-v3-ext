@@ -1,19 +1,22 @@
  document.addEventListener('DOMContentLoaded', async () => {
+  console.log('loadddd review 1');
   const el = document.getElementById('review-section');
   if (!el) return;
-  console.log('Grocom Review Widget initialized');
+    console.log('loadddd review 2');
   const productId = el.dataset.productId;
   const shop = Shopify.shop;
   const linkApp = 'https://be-gearo.vinetawp.com/api';
-
+  console.log('loadddd review 3');
   try {
     const res = await fetch(`${linkApp}/review-box?product_id=${productId}&shop=${shop}`);
+    console.log('bugggg 2');
     const data = await res.json();
     el.innerHTML = data.html;
-
+    console.log('bugggg 3');
     let handle = null;
     let title = null;
 
+    
     // Get handle
     if (window.ShopifyAnalytics?.meta?.product?.handle) {
       handle = window.ShopifyAnalytics.meta.product.handle;
