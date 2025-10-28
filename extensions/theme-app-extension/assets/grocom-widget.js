@@ -57,27 +57,24 @@
   } catch (error) {
     console.error('Error loading reviews:', error);
   }
-});
-(function($) {
- $(document).ready(function () {  
-    const el = document.getElementById('review-section');
-    if (!el) return;
-    const productId = el.dataset.productId;
-    const linkApp = 'https://be-gearo.vinetawp.com/api'; // your API base
-  $('#review-section #review-form').on('submit', async function (e) {
+
+ 
+
+  const form = el.querySelector('#review-form');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
     let handle = null;
     let title = null;
 
-     try {
+    try {
       const res = await fetch(`${linkApp}/review-box?product_id=${productId}&shop=${shop}`);
-      const data_res = await res.json();
-      el.innerHTML = data_res.html;
+      const dataRes = await res.json();
+      el.innerHTML = dataRes.html;
 
-      let handle = null;
-      let title = null;
-
-      // Get handle
+      // Lấy handle sản phẩm
       if (window.ShopifyAnalytics?.meta?.product?.handle) {
         handle = window.ShopifyAnalytics.meta.product.handle;
       } else if (window.meta?.product?.handle) {
@@ -88,236 +85,228 @@
         if (index !== -1 && parts[index + 1]) handle = parts[index + 1];
       }
 
-      // Wait a bit for title to render (in case of slow theme)
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // Đợi 300ms để tiêu đề render
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
-      // Get title
-      if (window.ShopifyAnalytics?.meta?.product?.title) {
-        title = window.ShopifyAnalytics.meta.product.title;
-      } else if (window.meta?.product?.title) {
-        title = window.meta.product.title;
+      // Lấy title sản phẩm
+      const elTitle = document.querySelector(
+        'h1.product__title, .product-title, h1.product__name, h1.title, [data-product-title]'
+      );
+      if (elTitle) {
+        title = elTitle.textContent.trim();
+        console.log('✅ Detected title:', title);
       } else {
-        const elTitle = document.querySelector(
-          'h1.product__title, .product-title, h1.product__name, h1.title, [data-product-title]'
-        );
-        if (elTitle) {
-          title = elTitle.textContent.trim();
-          console.log('Detected title:', title);
-        } else {
-          console.warn('Title element not found in DOM');
-        }
+        console.warn('⚠️ Title element not found in DOM');
       }
 
-      // Assign values to form inputs
+      // Gán giá trị vào input hidden
       const inputHandle = el.querySelector('input[name="handle"]');
       if (inputHandle && handle) inputHandle.value = handle;
-      else console.warn('Input[name="handle"] not found or handle not detected');
+      else console.warn('⚠️ Input[name="handle"] not found or handle missing');
 
       const inputTitle = el.querySelector('input[name="product_title"]');
       if (inputTitle && title) inputTitle.value = title;
-      else console.warn('Input[name="product_title"] not found or title not detected', title);
+      else console.warn('⚠️ Input[name="product_title"] not found or title missing', title);
 
-    
-      const domain = Shopify.shop;
-      const apiUrl = `${linkApp}/submit-review`;
+      // Thu thập dữ liệu review
+      const rating = el.querySelector('input[name="rating"]:checked')?.value;
+      const review_title = el.querySelector('#review_title')?.value.trim();
+      const review_text = el.querySelector('#review_text')?.value.trim();
+      const user_name = el.querySelector('#user_name')?.value.trim();
+      const user_email = el.querySelector('#user_email')?.value.trim();
 
-      const data = {
-        domain: domain,
-        product_id: productId,
-        title: title,
-        handle: handle,          
-        rating: $('#review-section #review-form input[name="rating"]:checked').val(),
-        review_title: $('#review-section #review-form #review_title').val(),
-        review_text: $('#review-section #review-form #review_text').val(),
-        user_name: $('#review-section #review-form #user_name').val(),
-        user_email: $('#review-section #review-form #user_email').val()
-      };
-
-      if (!data.rating || !data.review_text || !data.user_email) {
-        $('.text-notification').html('Please fill in rating,review test and email fields before submitting your review.');
+      if (!rating || !review_text || !user_email) {
+        const notif = el.querySelector('.text-notification');
+        if (notif) notif.textContent = 'Please fill in rating, review text and email fields before submitting your review.';
         return;
       }
 
-      $.ajax({
-        type: 'POST',
-        url: apiUrl,
-        data: data,
-        success: function (response) {
-          if (response.status === 'success') {
-            $('.text-notification').addClass('success').html('Thank you! Your review has been submitted successfully.');
+      // Gửi dữ liệu lên server
+      const apiUrl = `${linkApp}/submit-review`;
+      const postData = {
+        domain: shop,
+        product_id: productId,
+        title,
+        handle,
+        rating,
+        review_title,
+        review_text,
+        user_name,
+        user_email
+      };
 
-            $('#review-form')[0].reset();
-
-            reloadReviewSummary(); 
-          } else {
-            alert('Error: ' + (response.message || 'Unknown error occurred.'));
-          }
-        },
-        error: function (xhr, status, error) {
-          console.error('Review submission failed:', error);
-          // $('.text-notification').html('An error occurred while submitting your review. Please try again later.');            
-          $('.text-notification').html('message');            
-        }
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(postData)
       });
+
+      const result = await response.json();
+
+      const notif = el.querySelector('.text-notification');
+      if (result.status === 'success') {
+        if (notif) {
+          notif.classList.add('success');
+          notif.textContent = 'Thank you! Your review has been submitted successfully.';
+        }
+        form.reset();
+        reloadReviewSummary();
+      } else {
+        alert('Error: ' + (result.message || 'Unknown error occurred.'));
+      }
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      const notif = el.querySelector('.text-notification');
+      if (notif) notif.textContent = 'An error occurred while submitting your review.';
+    }
+  });
+
+  // ==== FUNCTION: Reload review summary ====
+  async function reloadReviewSummary() {
+    try {
+      const url = new URL(`${linkApp}/get-review-summary`);
+      url.searchParams.append('domain', shop);
+      url.searchParams.append('product_id', productId);
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.status === 'success') {
+        const total = data.total;
+        const breakdown = data.breakdown;
+        const container = el.querySelector('.lstSum');
+        if (!container) return;
+
+        container.innerHTML = '';
+        [5, 4, 3, 2, 1].forEach((star) => {
+          const count = breakdown[star] || 0;
+          const percent = total ? Math.round((count / total) * 100) : 0;
+          const starsHtml = '★'.repeat(star) + '☆'.repeat(5 - star);
+          const line = document.createElement('div');
+          line.className = 'star-row';
+          line.innerHTML = `${starsHtml} — ${count} reviews (${percent}%)`;
+          container.appendChild(line);
+        });
+      }
+    } catch (error) {
+      console.error('Error reloading review summary:', error);
+    }
+  }
+
+  // ==== FUNCTION: Fetch list reviews ====
+  async function getListReviews() {
+    try {
+      const url = new URL(`${linkApp}/get-reviews-full`);
+      url.searchParams.append('domain', shop);
+      url.searchParams.append('product_id', productId);
+      url.searchParams.append('type', 'product');
+
+      const res = await fetch(url);
+      const data = await res.json();
+
+      const container = el.querySelector('.review-container');
+      if (!container) return;
+      container.innerHTML = '';
+
+      if (data.status === 'success') {
+        if (!data.reviews.length) {
+          container.innerHTML = '<div class="no-comment">No comments</div>';
+        } else {
+          data.reviews.forEach((review) => {
+            container.insertAdjacentHTML('beforeend', renderReviewRecursive(review));
+          });
+        }
+      }
     } catch (error) {
       console.error('Error loading reviews:', error);
     }
-
-  });
-
-  function reloadReviewSummary() {
-    const url = new URL(`${linkApp}/get-review-summary`);
-    url.searchParams.append('domain', Shopify.shop);
-    url.searchParams.append('product_id', productId);
-    
-
-    fetch(url.toString())
-    .then(response => response.json())
-    .then(data => {
-      if (data.status === 'success') {
-        const summary = data;
-        const total = summary.total;
-        const breakdown = summary.breakdown;
-
-        const container = $('#review-section .lstSum');
-        container.html('');
-
-        [5, 4, 3, 2, 1].forEach(star => {
-          const count = breakdown[star] || 0;
-          const percent = total ? Math.round((count / total) * 100) : 0;
-
-          const starsHtml = '★'.repeat(star) + '☆'.repeat(5 - star);
-          const line = `<div class="star-row">
-                          ${starsHtml} — ${count} reviews (${percent}%)
-                        </div>`;
-          container.append(line);
-        });
-      } else {
-        console.error('Failed to fetch review summary:', data.message);
-      }
-    })
-    .catch(error => {
-      console.error('Review summary request failed:', error);
-    });
   }
 
-  function getListReviews() {
-    const url = new URL(`${linkApp}/get-reviews-full`);
-    url.searchParams.append('domain', Shopify.shop);
-    url.searchParams.append('product_id', productId); 
-    url.searchParams.append('type','product');
-
-    fetch(url.toString())
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          const container = $('#review-section .review-container');
-          container.html('');
-
-          if (data.reviews.length === 0) {
-            container.append('<div class="no-comment">No comments</div>');
-          } else {
-            data.reviews.forEach(review => {
-              const html = renderReviewRecursive(review);
-              container.append(html);
-            });
-          }
-
-        } else {
-          console.error('Error loading reviews:', data.message);
-        }
-      })
-      .catch(err => {
-        console.error('Fetch error:', err);
-      });
-  }
-  
-
+  // ==== FUNCTION: Recursive render review ====
   function renderReviewRecursive(review, level = 0) {
     const indent = level * 20;
     const stars = review.rating ? '★'.repeat(review.rating) + '☆'.repeat(5 - review.rating) : '';
     const email = (review.user_email || '').trim().toLowerCase();
-    let avatarUrl = `https://www.gravatar.com/avatar/${md5(email)}?s=200&d=mp`;
+    const avatarUrl = `https://www.gravatar.com/avatar/${md5(email)}?s=200&d=mp`;
 
-    const html = `         
+    let html = `
       <div class="review-item" style="margin-left: ${indent}px;">
         <div class="infor">
           <div class="avatar">
-            <img src="${avatarUrl}" width="" height="" loading="lazy" />
+            <img src="${avatarUrl}" loading="lazy" />
           </div>
           <div class="content">
             <h6 class="review-author">${review.user_name || 'Anonymous'} <span>${stars}</span></h6>
-            <div class="review-date">${formatDate(review.created_at)}</div>              
+            <div class="review-date">${formatDate(review.created_at)}</div>
           </div>
         </div>
         <div class="review-text">${review.review_text}</div>
-        </div>
-      `;
+      </div>
+    `;
 
-    let repliesHtml = '';
-    if (review.replies && review.replies.length > 0) {
-      review.replies.forEach(reply => {
-        repliesHtml += renderReviewRecursive(reply, level + 1);
+    if (review.replies?.length) {
+      review.replies.forEach((reply) => {
+        html += renderReviewRecursive(reply, level + 1);
       });
     }
-
-    return html + repliesHtml;
-  }
-  getListReviews();
-
-  function getCountReview() {
-    const domain = Shopify.shop;
-    const getUrl = `${linkApp}/count-comments`;
-
-    const url = new URL(getUrl);
-    url.searchParams.append('domain', domain);
-    url.searchParams.append('product_id', productId);
-    url.searchParams.append('type', 'product');
-
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        if (data.status === 'success') {
-          const count = data.total || 0;
-          const formatted = count > 0 ? String(count).padStart(1, '0') : '0';
-          const el = document.getElementById('count-number');
-          if (el) el.textContent = formatted;
-        }
-      })
-    .catch(err => console.error('Failed to fetch comment count:', err));
+    return html;
   }
 
-  getCountReview();
+  // ==== FUNCTION: Count review ====
+  async function getCountReview() {
+    try {
+      const url = new URL(`${linkApp}/count-comments`);
+      url.searchParams.append('domain', shop);
+      url.searchParams.append('product_id', productId);
+      url.searchParams.append('type', 'product');
 
+      const res = await fetch(url);
+      const data = await res.json();
+      if (data.status === 'success') {
+        const count = data.total || 0;
+        const formatted = count > 0 ? String(count).padStart(1, '0') : '0';
+        const countEl = document.getElementById('count-number');
+        if (countEl) countEl.textContent = formatted;
+      }
+    } catch (error) {
+      console.error('Error fetching review count:', error);
+    }
+  }
+
+  // ==== Utility ====
   function formatDate(dateStr) {
     const date = new Date(dateStr);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  // ==== Toggle form/list ====
+  const btnReview = el.querySelector('.c-btnReview');
+  const btnCancel = el.querySelector('.c-btnCancelReview');
+  const formContainer = el.querySelector('.form');
+  const listContainer = el.querySelector('.list');
+
+  if (btnReview && btnCancel && formContainer && listContainer) {
+    formContainer.style.display = 'none';
+    btnCancel.style.display = 'none';
+
+    btnReview.addEventListener('click', () => {
+      console.log('show form');
+      listContainer.style.display = 'none';
+      formContainer.style.display = 'block';
+      btnReview.style.display = 'none';
+      btnCancel.style.display = 'inline-block';
+    });
+
+    btnCancel.addEventListener('click', () => {
+      console.log('show list');
+      listContainer.style.display = 'block';
+      formContainer.style.display = 'none';
+      btnReview.style.display = 'inline-block';
+      btnCancel.style.display = 'none';
     });
   }
 
-  $('.c-productReview .form').hide();
-  $('.c-productReview .c-btnCancelReview').hide();
-
-  $('.c-productReview .c-btnReview').click(function() {  
-    console.log('show form');      
-    $('.c-productReview .list').hide();
-    $('.c-productReview .form').show();
-
-    $('.c-productReview .c-btnReview').hide();
-    $('.c-productReview .c-btnCancelReview').show();
-  });
-
-  $('.c-productReview .c-btnCancelReview').click(function() {
-    console.log('show list');
-    $('.c-productReview .list').show();
-    $('.c-productReview .form').hide();
-
-    $('.c-productReview .c-btnReview').show();
-    $('.c-productReview .c-btnCancelReview').hide();
-  });
-  });
-
-})(jQuery);
+  // Initial load
+  getListReviews();
+  getCountReview();
+});
