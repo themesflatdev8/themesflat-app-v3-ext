@@ -138,7 +138,7 @@
           notif.textContent = 'Thank you! Your review has been submitted successfully.';
         }
         form.reset();
-        reloadReviewSummary();
+        // reloadReviewSummary();
       } else {
         alert('Error: ' + (result.message || 'Unknown error occurred.'));
       }
