@@ -1,19 +1,18 @@
-<div id="review-section"
+<section>
+  <div id="review-section"
      data-product-id="{{ product.id }}"
      data-product-handle="{{ product.handle }}">
 </div>
-
 
 <link rel="stylesheet" href="{{ 'review-widget.css' | asset_url }}">
 
 <script src="{{ 'grocom-widget.js' | asset_url }}" defer></script>
 
-
-
+</section>
 
 {% schema %}
 {
-  "name": "Widget Review",
+  "name": "Grocom Review",
   "target": "section",
   "settings": []
 }
