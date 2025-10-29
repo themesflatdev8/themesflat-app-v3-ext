@@ -209,7 +209,7 @@
 
 
 .c-productReview .head {
-    display: block;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
