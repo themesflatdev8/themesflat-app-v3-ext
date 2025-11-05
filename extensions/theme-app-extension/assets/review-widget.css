@@ -345,7 +345,7 @@
 
 
 .review-item .infor {
-  display: flex;
+  display: block!important;
   gap: 20px;
   margin-bottom: 12px;
 }
